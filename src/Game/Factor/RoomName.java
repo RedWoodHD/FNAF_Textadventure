@@ -1,0 +1,19 @@
+package Game.Factor;
+
+public enum RoomName
+{
+    DININGAREA,
+    SHOWSTAGE,
+    BACKSTAGE,
+    PIRATECOVE,
+    RESTROOMS,
+    KITCHEN,
+    EASTHALL,
+    EASTHALLCORNER,
+    EASTDOOR,
+    WESTHALL,
+    WESTHALLCORNER,
+    WESTDOOR,
+    SUPPLYCLOSET,
+    OFFICE,
+}
