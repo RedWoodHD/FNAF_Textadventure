@@ -8,6 +8,6 @@ public class FnafGame
 
     public static void runGame()
     {
-        RoomManager.getAllRooms();
+//        RoomManager.getAllRooms();
     }
 }
