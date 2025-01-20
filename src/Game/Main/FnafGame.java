@@ -1,14 +1,17 @@
 package Game.Main;
 
-import Game.Manager.PizzeriaManager;
+import Game.Factor.RoomName;
 import Game.Manager.RoomManager;
+import Game.Object.Room;
+
+import java.util.Map;
 
 public class FnafGame
 {
 
     public static void runGame()
     {
-//        RoomManager.getAllRooms();
-//        Test Me
+        Map<RoomName, Room> allRooms;
+        allRooms = RoomManager.getAllRooms();
     }
 }

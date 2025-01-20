@@ -9,7 +9,9 @@ import java.util.Map;
 
 public class RoomManager
 {
-    public Map<RoomName, Room> getAllRooms(){
+    Map<RoomName, Room> allRooms = new HashMap<>();
+
+    private  Map<RoomName, Room> getAllRooms(){
         Map<RoomName, Room> allRooms = new HashMap<>();
 
 //        Erstelle jeden Raum ohne Nachbarräume.
@@ -55,12 +57,12 @@ public class RoomManager
         allRooms.put(RoomName.OFFICE,office);
         return allRooms;
     }
-    private Room createRoom(RoomName roomName)
+    private static Room createRoom(RoomName roomName)
     {
         Room room = new Room(roomName);
         return room;
     }
-    private Room addNeighborRoom (Room currentRoom,Direction direction ,Room roomToAdd){
+    private static Room addNeighborRoom(Room currentRoom, Direction direction, Room roomToAdd){
 
         if (currentRoom.getNeighborRooms().isEmpty()){
             Map<Direction, Room> neighborMap = new HashMap<>();
