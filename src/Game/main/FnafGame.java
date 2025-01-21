@@ -6,7 +6,6 @@ import Game.mechanic.RoundMechanic;
 
 public class FnafGame
 {
-
     public static void runGame()
     {
         PizzeriaManager pizzeriaManager = new PizzeriaManager();
@@ -15,7 +14,6 @@ public class FnafGame
 
         for (int i = 1; i <= 20 ; i++) {
             roundMechanic.startRound(i,pizzeriaManager.getPizzeria());
-            System.out.println("/"+pizzeriaManager.getPizzeria().getEnergyLeft());
         }
     }
 }

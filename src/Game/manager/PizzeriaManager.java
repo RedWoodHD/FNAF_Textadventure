@@ -5,15 +5,16 @@ import Game.factor.RoomName;
 import Game.object.Enemy;
 import Game.object.Pizzeria;
 import Game.object.Room;
+
 import java.util.Map;
 
 public class PizzeriaManager
 {
-    RoomManager roomManager = new RoomManager();
-    EnemyManager enemyManager = new EnemyManager();
-    Map<RoomName, Room> pizzeriaAllRooms = roomManager.allRooms;
-    Map<EnemyName, Enemy> pizzeriaAllEnemies = enemyManager.enemyMap;
-    Pizzeria pizzeria = new Pizzeria(100,pizzeriaAllRooms,pizzeriaAllEnemies);
+    private RoomManager roomManager = new RoomManager();
+    private EnemyManager enemyManager = new EnemyManager();
+    private Map<RoomName, Room> pizzeriaAllRooms = roomManager.getAllRooms();
+    private Map<EnemyName, Enemy> pizzeriaAllEnemies = enemyManager.getEnemyMap();
+    private Pizzeria pizzeria = new Pizzeria(100, pizzeriaAllRooms, pizzeriaAllEnemies);
 
     public RoomManager getRoomManager()
     {
