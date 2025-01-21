@@ -10,5 +10,10 @@ public class FnafGame
     {
         PizzeriaManager pizzeriaManager = new PizzeriaManager();
         System.out.println(pizzeriaManager.getEnemyManager().getEnemyMap().get(EnemyName.FREDDY).getLevel());
+
+        for (int i = 0; i <=20 ; i++) {
+            System.out.println("Round: "+i);
+
+        }
     }
 }

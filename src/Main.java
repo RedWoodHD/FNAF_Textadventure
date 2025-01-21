@@ -22,14 +22,14 @@ public class Main
 
     public static void main(String[] args)
     {
-        FnafGame.runGame();
+//        FnafGame.runGame();
 
 
-        Pizzeria pizzeria = createPizzaria();
-        pizzeria = startGame(pizzeria);
-        Tablet gameTablet = new Tablet();
-        Player userCharacter = new Player();
-        userCharacter.setTablet(gameTablet);
+//        Pizzeria pizzeria = createPizzaria();
+//        pizzeria = startGame(pizzeria);
+//        Tablet gameTablet = new Tablet();
+//        Player userCharacter = new Player();
+//        userCharacter.setTablet(gameTablet);
 
     }
 
