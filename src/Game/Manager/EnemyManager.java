@@ -10,16 +10,26 @@ import java.util.Map;
 
 public class EnemyManager
 {
-//    public Map<EnemyName, Enemy> getAllEnemies(Map<RoomName, Room> allRooms){
-//
-//        Map<EnemyName, Enemy> allEnemies = new HashMap<>();
-//        allEnemies.put(EnemyName.FREDDY,createEnemy(EnemyName.FREDDY,allRooms.get(),)
-//
-//    }
+    Map<EnemyName, Enemy> enemyMap = createEnemyMap();
 
+    private Map<EnemyName, Enemy> createEnemyMap ()
+    {
+        Map<EnemyName, Enemy> allEnemies = new HashMap<>();
+        RoomManager roomManager = new RoomManager();
+        Map<EnemyName, Enemy> allEnemiesMap = new HashMap<>();
+        Enemy freddy    = createEnemy(EnemyName.FREDDY, roomManager.allRooms.get(RoomName.SHOWSTAGE), 5);
+        Enemy bonnie    = createEnemy(EnemyName.BONNIE, roomManager.allRooms.get(RoomName.SHOWSTAGE), 3);
+        Enemy chica     =  createEnemy(EnemyName.CHICA, roomManager.allRooms.get(RoomName.SHOWSTAGE), 4);
+        Enemy foxxy     = createEnemy(EnemyName.FOXXY, roomManager.allRooms.get(RoomName.PIRATECOVE), 7);
+
+        allEnemiesMap.put(EnemyName.FREDDY, freddy);
+        allEnemiesMap.put(EnemyName.BONNIE, bonnie);
+        allEnemiesMap.put(EnemyName.CHICA, chica);
+        allEnemiesMap.put(EnemyName.FOXXY, foxxy);
+
+        return allEnemiesMap;
+    }
     private Enemy createEnemy(EnemyName name, Room startingPosition, int level){
         return new Enemy(name,startingPosition,level);
     }
-
-
 }
