@@ -33,53 +33,53 @@ public class RoomManager
         Room office = createRoom(RoomName.OFFICE);
 
 //        Erstelle für jeden Raum die Nachbarräume.
-        showStage = addNeighborRoom(showStage,Direction.SOUTH1,diningArea);
-        showStage = addNeighborRoom(showStage,Direction.WEST1,backstage);
-        showStage = addNeighborRoom(showStage,Direction.EAST,restrooms);
-
-        diningArea = addNeighborRoom(diningArea,Direction.NORTH,showStage);
-        diningArea = addNeighborRoom(diningArea,Direction.EAST,restrooms);
-        diningArea = addNeighborRoom(diningArea,Direction.SOUTH1,westHall);
-        diningArea = addNeighborRoom(diningArea,Direction.SOUTH2,eastHall);
-        diningArea = addNeighborRoom(diningArea,Direction.SOUTH3,kitchen);
-        diningArea = addNeighborRoom(diningArea,Direction.WEST1,backstage);
-        diningArea = addNeighborRoom(diningArea,Direction.WEST2,pirateCove);
-
-        backstage = addNeighborRoom(backstage,Direction.EAST, diningArea);
-        backstage = addNeighborRoom(backstage,Direction.SOUTH1, westHall);
-
-        pirateCove = addNeighborRoom(pirateCove, Direction.EAST, diningArea);
-
-        restrooms = addNeighborRoom(restrooms, Direction.WEST1, diningArea);
-        restrooms = addNeighborRoom(restrooms, Direction.SOUTH1, kitchen);
-
-        kitchen = addNeighborRoom(kitchen, Direction.NORTH, diningArea);
-        kitchen = addNeighborRoom(kitchen, Direction.WEST1, eastHall);
-
-        eastHall = addNeighborRoom(eastHall, Direction.NORTH, diningArea);
-        eastHall = addNeighborRoom(eastHall, Direction.SOUTH1, eastHallCorner);
-
-        eastHallCorner = addNeighborRoom(eastHallCorner,Direction.NORTH, eastHall);
-        eastHallCorner = addNeighborRoom(eastHallCorner,Direction.WEST1, eastDoor);
-
-        eastDoor = addNeighborRoom(eastDoor, Direction.WEST1, office);
-        eastDoor = addNeighborRoom(eastDoor, Direction.EAST, eastHallCorner);
-
-        westHall = addNeighborRoom(westHall, Direction.NORTH, diningArea);
-        westHall = addNeighborRoom(westHall, Direction.SOUTH1, westHallCorner);
-        westHall = addNeighborRoom(westHall, Direction.WEST1, supplyCloset);
-
-        westHallCorner = addNeighborRoom(westHallCorner, Direction.NORTH, supplyCloset);
-        westHallCorner = addNeighborRoom(westHallCorner, Direction.EAST, westDoor);
-
-        westDoor = addNeighborRoom(westDoor, Direction.EAST, office);
-        westDoor = addNeighborRoom(westDoor, Direction.WEST1, westHallCorner);
-
-        supplyCloset = addNeighborRoom(supplyCloset, Direction.EAST, westHall);
-
-        office = addNeighborRoom(office, Direction.EAST, eastHallCorner);
-        office = addNeighborRoom(office, Direction.WEST1, westHallCorner);
-
+//        showStage = addNeighborRoom(showStage,Direction.SOUTH1,diningArea);
+//        showStage = addNeighborRoom(showStage,Direction.WEST1,backstage);
+//        showStage = addNeighborRoom(showStage,Direction.EAST,restrooms);
+//
+//        diningArea = addNeighborRoom(diningArea,Direction.NORTH,showStage);
+//        diningArea = addNeighborRoom(diningArea,Direction.EAST,restrooms);
+//        diningArea = addNeighborRoom(diningArea,Direction.SOUTH1,westHall);
+//        diningArea = addNeighborRoom(diningArea,Direction.SOUTH2,eastHall);
+//        diningArea = addNeighborRoom(diningArea,Direction.SOUTH3,kitchen);
+//        diningArea = addNeighborRoom(diningArea,Direction.WEST1,backstage);
+//        diningArea = addNeighborRoom(diningArea,Direction.WEST2,pirateCove);
+//
+//        backstage = addNeighborRoom(backstage,Direction.EAST, diningArea);
+//        backstage = addNeighborRoom(backstage,Direction.SOUTH1, westHall);
+//
+//        pirateCove = addNeighborRoom(pirateCove, Direction.EAST, diningArea);
+//
+//        restrooms = addNeighborRoom(restrooms, Direction.WEST1, diningArea);
+//        restrooms = addNeighborRoom(restrooms, Direction.SOUTH1, kitchen);
+//
+//        kitchen = addNeighborRoom(kitchen, Direction.NORTH, diningArea);
+//        kitchen = addNeighborRoom(kitchen, Direction.WEST1, eastHall);
+//
+//        eastHall = addNeighborRoom(eastHall, Direction.NORTH, diningArea);
+//        eastHall = addNeighborRoom(eastHall, Direction.SOUTH1, eastHallCorner);
+//
+//        eastHallCorner = addNeighborRoom(eastHallCorner,Direction.NORTH, eastHall);
+//        eastHallCorner = addNeighborRoom(eastHallCorner,Direction.WEST1, eastDoor);
+//
+//        eastDoor = addNeighborRoom(eastDoor, Direction.WEST1, office);
+//        eastDoor = addNeighborRoom(eastDoor, Direction.EAST, eastHallCorner);
+//
+//        westHall = addNeighborRoom(westHall, Direction.NORTH, diningArea);
+//        westHall = addNeighborRoom(westHall, Direction.SOUTH1, westHallCorner);
+//        westHall = addNeighborRoom(westHall, Direction.WEST1, supplyCloset);
+//
+//        westHallCorner = addNeighborRoom(westHallCorner, Direction.NORTH, supplyCloset);
+//        westHallCorner = addNeighborRoom(westHallCorner, Direction.EAST, westDoor);
+//
+//        westDoor = addNeighborRoom(westDoor, Direction.EAST, office);
+//        westDoor = addNeighborRoom(westDoor, Direction.WEST1, westHallCorner);
+//
+//        supplyCloset = addNeighborRoom(supplyCloset, Direction.EAST, westHall);
+//
+//        office = addNeighborRoom(office, Direction.EAST, eastHallCorner);
+//        office = addNeighborRoom(office, Direction.WEST1, westHallCorner);
+//
 
 
 
