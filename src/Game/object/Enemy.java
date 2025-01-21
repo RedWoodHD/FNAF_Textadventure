@@ -1,8 +1,6 @@
-package Game.Object;
+package Game.object;
 
-import Game.Factor.EnemyName;
-
-import java.util.logging.Level;
+import Game.factor.EnemyName;
 
 public class Enemy
 {

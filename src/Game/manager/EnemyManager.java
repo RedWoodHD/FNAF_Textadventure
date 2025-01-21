@@ -1,9 +1,9 @@
-package Game.Manager;
+package Game.manager;
 
-import Game.Factor.EnemyName;
-import Game.Factor.RoomName;
-import Game.Object.Enemy;
-import Game.Object.Room;
+import Game.factor.EnemyName;
+import Game.factor.RoomName;
+import Game.object.Enemy;
+import Game.object.Room;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,9 +12,13 @@ public class EnemyManager
 {
     Map<EnemyName, Enemy> enemyMap = createEnemyMap();
 
+
+    /**Die Methode erstellt eine HashMap mit allen Gegner und ihren start Bedingungen [Gegner Name, Start Raum, Schwierigkeits Level]
+     *
+     * @return Die HashMap mit allen erstellten Gegnern.
+     */
     private Map<EnemyName, Enemy> createEnemyMap ()
     {
-        Map<EnemyName, Enemy> allEnemies = new HashMap<>();
         RoomManager roomManager = new RoomManager();
         Map<EnemyName, Enemy> allEnemiesMap = new HashMap<>();
         allEnemiesMap.put(EnemyName.FREDDY, createEnemy(EnemyName.FREDDY, roomManager.allRooms.get(RoomName.SHOWSTAGE), 5));

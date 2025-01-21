@@ -1,6 +1,6 @@
-package Game.Object;
-import Game.Factor.Direction;
-import Game.Factor.RoomName;
+package Game.object;
+import Game.factor.Direction;
+import Game.factor.RoomName;
 
 import java.util.Map;
 

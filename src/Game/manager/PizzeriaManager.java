@@ -1,9 +1,10 @@
-package Game.Manager;
+package Game.manager;
 
-import Game.Factor.EnemyName;
-import Game.Factor.RoomName;
-import Game.Object.Enemy;
-import Game.Object.Room;
+import Game.factor.EnemyName;
+import Game.factor.RoomName;
+import Game.object.Enemy;
+import Game.object.Pizzeria;
+import Game.object.Room;
 import java.util.Map;
 
 public class PizzeriaManager
@@ -12,6 +13,7 @@ public class PizzeriaManager
     EnemyManager enemyManager = new EnemyManager();
     Map<RoomName, Room> pizzeriaAllRooms = roomManager.allRooms;
     Map<EnemyName, Enemy> pizzeriaAllEnemies = enemyManager.enemyMap;
+    Pizzeria pizzeria = new Pizzeria(100,pizzeriaAllRooms,pizzeriaAllEnemies);
 
     public RoomManager getRoomManager()
     {

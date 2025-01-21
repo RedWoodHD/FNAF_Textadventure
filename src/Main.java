@@ -1,4 +1,4 @@
-import Game.Main.FnafGame;
+import Game.main.FnafGame;
 
 import java.util.*;
 

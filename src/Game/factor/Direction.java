@@ -1,4 +1,4 @@
-package Game.Factor;
+package Game.factor;
 
 public enum Direction
 {

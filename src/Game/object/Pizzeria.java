@@ -1,7 +1,7 @@
-package Game.Object;
+package Game.object;
 
-import Game.Factor.EnemyName;
-import Game.Factor.RoomName;
+import Game.factor.EnemyName;
+import Game.factor.RoomName;
 import java.util.Map;
 
 public class Pizzeria

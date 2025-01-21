@@ -1,9 +1,9 @@
-package Game.Manager;
+package Game.manager;
 
 
-import Game.Factor.Direction;
-import Game.Factor.RoomName;
-import Game.Object.Room;
+import Game.factor.Direction;
+import Game.factor.RoomName;
+import Game.object.Room;
 import java.util.HashMap;
 import java.util.Map;
 
