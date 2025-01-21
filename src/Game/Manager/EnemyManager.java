@@ -17,15 +17,10 @@ public class EnemyManager
         Map<EnemyName, Enemy> allEnemies = new HashMap<>();
         RoomManager roomManager = new RoomManager();
         Map<EnemyName, Enemy> allEnemiesMap = new HashMap<>();
-        Enemy freddy    = createEnemy(EnemyName.FREDDY, roomManager.allRooms.get(RoomName.SHOWSTAGE), 5);
-        Enemy bonnie    = createEnemy(EnemyName.BONNIE, roomManager.allRooms.get(RoomName.SHOWSTAGE), 3);
-        Enemy chica     =  createEnemy(EnemyName.CHICA, roomManager.allRooms.get(RoomName.SHOWSTAGE), 4);
-        Enemy foxxy     = createEnemy(EnemyName.FOXXY, roomManager.allRooms.get(RoomName.PIRATECOVE), 7);
-
-        allEnemiesMap.put(EnemyName.FREDDY, freddy);
-        allEnemiesMap.put(EnemyName.BONNIE, bonnie);
-        allEnemiesMap.put(EnemyName.CHICA, chica);
-        allEnemiesMap.put(EnemyName.FOXXY, foxxy);
+        allEnemiesMap.put(EnemyName.FREDDY, createEnemy(EnemyName.FREDDY, roomManager.allRooms.get(RoomName.SHOWSTAGE), 5));
+        allEnemiesMap.put(EnemyName.BONNIE, createEnemy(EnemyName.BONNIE, roomManager.allRooms.get(RoomName.SHOWSTAGE), 3));
+        allEnemiesMap.put(EnemyName.CHICA, createEnemy(EnemyName.CHICA, roomManager.allRooms.get(RoomName.SHOWSTAGE), 4));
+        allEnemiesMap.put(EnemyName.FOXXY, createEnemy(EnemyName.FOXXY, roomManager.allRooms.get(RoomName.PIRATECOVE), 7));
 
         return allEnemiesMap;
     }
