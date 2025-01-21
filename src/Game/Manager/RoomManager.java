@@ -9,9 +9,10 @@ import java.util.Map;
 
 public class RoomManager
 {
-    Map<RoomName, Room> allRooms = new HashMap<>();
+    Map<RoomName, Room> allRooms = createAllRooms();
 
-    private  Map<RoomName, Room> getAllRooms(){
+
+    private  Map<RoomName, Room> createAllRooms(){
         Map<RoomName, Room> allRooms = new HashMap<>();
 
 //        Erstelle jeden Raum ohne Nachbarräume.
@@ -19,6 +20,7 @@ public class RoomManager
         Room diningArea = createRoom(RoomName.DININGAREA);
         Room restrooms = createRoom(RoomName.RESTROOMS);
         Room backstage = createRoom(RoomName.BACKSTAGE);
+        Room pirateCove = createRoom(RoomName.PIRATECOVE);
         Room kitchen = createRoom(RoomName.KITCHEN);
         Room supplyCloset = createRoom(RoomName.SUPPLYCLOSET);
         Room eastHall = createRoom(RoomName.EASTHALL);
@@ -31,11 +33,51 @@ public class RoomManager
 
 //        Erstelle für jeden Raum die Nachbarräume.
         showStage = addNeighborRoom(showStage,Direction.SOUTH1,diningArea);
-        System.out.println(showStage.getNeighborRooms().get(Direction.SOUTH1).getRoomName());
         showStage = addNeighborRoom(showStage,Direction.WEST1,backstage);
-        System.out.println(showStage.getNeighborRooms().get(Direction.WEST1).getRoomName());
         showStage = addNeighborRoom(showStage,Direction.EAST,restrooms);
-        System.out.println(showStage.getNeighborRooms().get(Direction.EAST).getRoomName());
+
+        diningArea = addNeighborRoom(diningArea,Direction.NORTH,showStage);
+        diningArea = addNeighborRoom(diningArea,Direction.EAST,restrooms);
+        diningArea = addNeighborRoom(diningArea,Direction.SOUTH1,westHall);
+        diningArea = addNeighborRoom(diningArea,Direction.SOUTH2,eastHall);
+        diningArea = addNeighborRoom(diningArea,Direction.SOUTH3,kitchen);
+        diningArea = addNeighborRoom(diningArea,Direction.WEST1,backstage);
+        diningArea = addNeighborRoom(diningArea,Direction.WEST2,pirateCove);
+
+        backstage = addNeighborRoom(backstage,Direction.EAST, diningArea);
+        backstage = addNeighborRoom(backstage,Direction.SOUTH1, westHall);
+
+        pirateCove = addNeighborRoom(pirateCove, Direction.EAST, diningArea);
+
+        restrooms = addNeighborRoom(restrooms, Direction.WEST1, diningArea);
+        restrooms = addNeighborRoom(restrooms, Direction.SOUTH1, kitchen);
+
+        kitchen = addNeighborRoom(kitchen, Direction.NORTH, diningArea);
+        kitchen = addNeighborRoom(kitchen, Direction.WEST1, eastHall);
+
+        eastHall = addNeighborRoom(eastHall, Direction.NORTH, diningArea);
+        eastHall = addNeighborRoom(eastHall, Direction.SOUTH1, eastHallCorner);
+
+        eastHallCorner = addNeighborRoom(eastHallCorner,Direction.NORTH, eastHall);
+        eastHallCorner = addNeighborRoom(eastHallCorner,Direction.WEST1, eastDoor);
+
+        eastDoor = addNeighborRoom(eastDoor, Direction.WEST1, office);
+        eastDoor = addNeighborRoom(eastDoor, Direction.EAST, eastHallCorner);
+
+        westHall = addNeighborRoom(westHall, Direction.NORTH, diningArea);
+        westHall = addNeighborRoom(westHall, Direction.SOUTH1, westHallCorner);
+        westHall = addNeighborRoom(westHall, Direction.WEST1, supplyCloset);
+
+        westHallCorner = addNeighborRoom(westHallCorner, Direction.NORTH, supplyCloset);
+        westHallCorner = addNeighborRoom(westHallCorner, Direction.EAST, westDoor);
+
+        westDoor = addNeighborRoom(westDoor, Direction.EAST, office);
+        westDoor = addNeighborRoom(westDoor, Direction.WEST1, westHallCorner);
+
+        supplyCloset = addNeighborRoom(supplyCloset, Direction.EAST, westHall);
+
+        office = addNeighborRoom(office, Direction.EAST, eastHallCorner);
+        office = addNeighborRoom(office, Direction.WEST1, westHallCorner);
 
 
 
@@ -46,6 +88,7 @@ public class RoomManager
         allRooms.put(RoomName.DININGAREA,diningArea);
         allRooms.put(RoomName.RESTROOMS,restrooms);
         allRooms.put(RoomName.BACKSTAGE,backstage);
+        allRooms.put(RoomName.PIRATECOVE,pirateCove);
         allRooms.put(RoomName.KITCHEN,kitchen);
         allRooms.put(RoomName.SUPPLYCLOSET,supplyCloset);
         allRooms.put(RoomName.EASTHALL,eastHall);
