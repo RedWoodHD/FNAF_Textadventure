@@ -27,4 +27,15 @@ public class EnemyManager
     private Enemy createEnemy(EnemyName name, Room startingPosition, int level){
         return new Enemy(name,startingPosition,level);
     }
+
+    public Map<EnemyName, Enemy> getEnemyMap()
+    {
+        return enemyMap;
+    }
+
+    public EnemyManager setEnemyMap(Map<EnemyName, Enemy> enemyMap)
+    {
+        this.enemyMap = enemyMap;
+        return this;
+    }
 }

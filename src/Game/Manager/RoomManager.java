@@ -12,6 +12,7 @@ public class RoomManager
     Map<RoomName, Room> allRooms = createAllRooms();
 
 
+
     private  Map<RoomName, Room> createAllRooms(){
         Map<RoomName, Room> allRooms = new HashMap<>();
 
@@ -118,5 +119,16 @@ public class RoomManager
             currentRoom.setNeighborRooms(neighbormap);
             return currentRoom;
         }
+    }
+
+    public Map<RoomName, Room> getAllRooms()
+    {
+        return allRooms;
+    }
+
+    public RoomManager setAllRooms(Map<RoomName, Room> allRooms)
+    {
+        this.allRooms = allRooms;
+        return this;
     }
 }
