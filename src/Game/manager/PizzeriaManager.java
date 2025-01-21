@@ -58,5 +58,16 @@ public class PizzeriaManager
         this.pizzeriaAllEnemies = pizzeriaAllEnemies;
         return this;
     }
+
+    public Pizzeria getPizzeria()
+    {
+        return pizzeria;
+    }
+
+    public PizzeriaManager setPizzeria(Pizzeria pizzeria)
+    {
+        this.pizzeria = pizzeria;
+        return this;
+    }
 }
 
