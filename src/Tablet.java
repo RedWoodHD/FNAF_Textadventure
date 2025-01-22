@@ -1,3 +1,5 @@
+import Game.object.Camera;
+
 public class Tablet {
     private Camera selectedCamera;
 

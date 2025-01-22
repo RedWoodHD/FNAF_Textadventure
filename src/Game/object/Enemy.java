@@ -9,18 +9,18 @@ public class Enemy
     private int level;
     private boolean haveIBeenObserved;
 
-    /** Welche Wege nehmen die Animatronics
-     * Freddy show stage -> dining area -> restrooms -> Kitchen -> east hall -> east hall corner
-     * If door is closed wait 2 rounds, if still closed move to dining area otherwise kill player
-     *
-     * Boonie Show Stage -> dining area/backstage -> west hall -> supply closet/west hall corner. west hall corner -> Supply closet/west door.
-     * If door is closed go to dining Area, if not kill player after 2 rounds
-     *
-     * Chica show stage -> dining area/restrooms -> Kitchen(no cam) -> East hall -> East hall corner -> door
-     * If door is closed go to dining Area, if not kill player after 2 rounds
-     *
-     * Foxxy Stage 1 2 3 if Stage 4 he will kill you, if look at Foxxy freeze him for 2 rounds
-     *
+    /** {@code Welche Wege nehmen die Animatronics.}<br>
+     * Freddy show stage -> dining area -> restrooms -> Kitchen -> east hall -> east hall corner<br>
+     * If door is closed wait 2 rounds, if still closed move to dining area otherwise kill player<br>
+     *<br>
+     * Boonie Show Stage -> dining area/backstage -> west hall -> supply closet/west hall corner. west hall corner -> Supply closet/west door.<br>
+     * If door is closed go to dining Area, if not kill player after 2 rounds.<br>
+     *<br>
+     * Chica show stage -> dining area/restrooms -> Kitchen(no cam) -> East hall -> East hall corner -> door<br>
+     * If door is closed go to dining Area, if not kill player after 2 rounds<br>
+     *<br>
+     * Foxxy Stage 1 2 3 if Stage 4 he will kill you, if look at Foxxy freeze him for 2 rounds<br>
+     *<br>
      *cam06 disabled Chica or Freddy make a Sound
      *
      */
@@ -35,9 +35,9 @@ public class Enemy
 
 
 
-    /**Die Methode liefert einen Boolean, ob der Gegner sich bewegen darf oder nicht.
-     * Dazu nimmt er eine zufällige Zahl zwischen 1 und 10 und schaut, ob diese größer als sein Level ist.
-     * Wenn er gesichtet wurde, wird der zufällige Wert um 2 verringert.
+    /**Die Methode liefert einen {@link boolean}, ob der {@link Enemy} sich bewegen darf oder nicht.<br>
+     * Dazu nimmt er eine zufällige Zahl zwischen 1 und 10 und schaut, ob diese größer als sein {@link Enemy#level} ist.<br>
+     * Wenn er gesichtet wurde {@link Enemy#haveIBeenObserved}, wird der zufällige {@link int} um 2 verringert.<br>
      * @return True oder False
      */
     public boolean canIMove(){

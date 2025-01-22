@@ -9,8 +9,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Verwaltet alle{@link Enemy}'s
- * Verwalten heißt:
+ * Verwaltet alle{@link Enemy}'s<br>
+ * Verwalten heißt:<br>
  * Erstellen {@link #createEnemy(EnemyName, Room, int)}
  */
 
@@ -20,7 +20,7 @@ public class EnemyManager
 
 
     /**
-     * Die Methode erstellt eine HashMap mit allen Gegner und ihren start Bedingungen [{@link EnemyName}, Start Raum, Schwierigkeits Level]
+     * Die Methode erstellt eine HashMap mit allen Gegner und ihren <br> start Bedingungen [{@link EnemyName}, Start {@link Room}, Schwierigkeits {@link Enemy#level}]
      *
      * @return Die HashMap mit allen erstellten Gegnern.
      */
