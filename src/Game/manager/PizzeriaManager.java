@@ -16,6 +16,14 @@ public class PizzeriaManager
     private Map<EnemyName, Enemy> pizzeriaAllEnemies = enemyManager.getEnemyMap();
     private Pizzeria pizzeria = new Pizzeria(100, pizzeriaAllRooms, pizzeriaAllEnemies);
 
+    /**Diese Methode liefert einen schnelleren Zugriff auf {@link Enemy}'s.
+     * @param enemyName dieser Parameter bestimmt welcher {@link Enemy} zurückgeliefert wird.
+     * @return gibt einen {@link Enemy} zurück.
+     */
+    public Enemy getEnemy (EnemyName enemyName){
+        return pizzeriaAllEnemies.get(enemyName);
+    }
+
     public RoomManager getRoomManager()
     {
         return roomManager;
