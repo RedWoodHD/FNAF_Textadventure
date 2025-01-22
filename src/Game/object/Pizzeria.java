@@ -35,11 +35,6 @@ public class Pizzeria
     public Room getEnemyRoom (EnemyName enemyName){
         return enemyMap.get(enemyName).getWhereAmI();
     }
-
-    public Pizzeria buildPizzeria(Integer energyLeft, Map<RoomName, Room> roomMap, Map<EnemyName, Enemy> enemyMap){
-        return new Pizzeria(energyLeft, roomMap, enemyMap);
-}
-
     public Map<RoomName, Room> getRoomMap()
     {
         return roomMap;
