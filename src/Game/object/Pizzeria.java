@@ -10,12 +10,32 @@ public class Pizzeria
     private Map<RoomName, Room> roomMap;
     private Map<EnemyName,Enemy> enemyMap;
 
+
     public Pizzeria(Integer energyLeft, Map<RoomName, Room> roomMap, Map<EnemyName, Enemy> enemyMap)
     {
         this.energyLeft = energyLeft;
         this.roomMap = roomMap;
         this.enemyMap = enemyMap;
     }
+    /**Diese Methode liefert einen schnelleren Zugriff auf {@link Enemy}'s.
+     * Sie nimmt den {@link EnemyName} des gewünschten {@link Enemy}'s und gibt diesen zurück.
+     * @param enemyName dieser Parameter bestimmt welcher {@link Enemy} zurückgeliefert wird.
+     * @return gibt einen {@link Enemy} zurück.
+     */
+    public Enemy getEnemy (EnemyName enemyName){
+        return enemyMap.get(enemyName);
+    }
+
+    /**
+     * Diese Methode liefert einen schnelleren Zugriff, auf den {@link Room} in dem sich der {@link Enemy} befindet.
+     * Sie nimmt den {@link EnemyName} des gewünschten {@link Enemy}'s und gibt dessen {@link Room} zurück.
+     * @param enemyName dieser Parameter bestimmt von welchem {@link Enemy} der {@link Enemy#whereAmI} {@link Room} zurückgeliefert werden soll.
+     * @return gibt den {@link Enemy#whereAmI} {@link Room} zurück.
+     */
+    public Room getEnemyRoom (EnemyName enemyName){
+        return enemyMap.get(enemyName).getWhereAmI();
+    }
+
     public Pizzeria buildPizzeria(Integer energyLeft, Map<RoomName, Room> roomMap, Map<EnemyName, Enemy> enemyMap){
         return new Pizzeria(energyLeft, roomMap, enemyMap);
 }

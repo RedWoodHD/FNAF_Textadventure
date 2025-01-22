@@ -15,7 +15,7 @@ public class RoundMechanic
         pizzeria.getEnemyMap().get(EnemyName.FREDDY).setWhereAmI(pizzeria.getRoomMap().get(RoomName.OFFICE));
         if (roundNumber == 10) {
 //            Ändere das in eine Methode get Enemy spare dir Methoden Aufrufe!!!
-            if (pizzeria.getEnemyMap().get(EnemyName.FREDDY).getWhereAmI().equals(pizzeria.getRoomMap().get(RoomName.OFFICE))) {
+            if (pizzeria.getEnemy(EnemyName.FREDDY).getWhereAmI().equals(pizzeria.getRoomMap().get(RoomName.OFFICE))) {
                 System.out.println(pizzeria.getEnemyMap().get(EnemyName.FREDDY).getName());
             }
         }
