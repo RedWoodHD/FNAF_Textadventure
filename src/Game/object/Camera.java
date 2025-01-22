@@ -5,6 +5,7 @@ import java.util.List;
 public class Camera
 {
     private List<Camera> connectedCameras;
+    private boolean isPlayerLookingAtIt;
 
     public void useCamera(){
         // Kann ich die überhaupt noch benutzen? Ist noch Strom da?
