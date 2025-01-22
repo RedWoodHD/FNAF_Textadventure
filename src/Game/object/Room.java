@@ -4,6 +4,9 @@ import Game.factor.RoomName;
 
 import java.util.Map;
 
+/**
+ * Diese Klasse, repräsentiert einen Raum, um die Karte des Spiels in Räume aufzuteilen.
+ */
 public class Room
 {
     private RoomName roomName;

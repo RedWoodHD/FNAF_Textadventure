@@ -1,5 +1,8 @@
 package Game.text_message;
 
+/**
+ * Die Methode ist dafür da verschiedene Farben in Variablen zu speichern, um mithilfe dieser die Ausgabe auf der Konsole einzufärben.
+ */
 public class Colors
 {
     final static String red = "\u001b[31m";
