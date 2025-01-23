@@ -15,19 +15,6 @@ public class Room
     private boolean doorClosed;
     private int pirateCoveOpeningStage = 0;
 
-    @Override
-    public boolean equals(Object obj)
-    {
-        if(obj instanceof Room room)
-        {
-            return room.getRoomName() == this.getRoomName();
-        }
-        else
-        {
-            return false;
-        }
-    }
-
     public Room(RoomName roomName)
     {
         this.roomName = roomName;
@@ -37,8 +24,14 @@ public class Room
         return pirateCoveOpeningStage;
     }
 
-    public Room setPirateCoveOpeningStage(int pirateCoveOpeningStage) {
+    public Room setPirateCoveOpeningStage(int pirateCoveOpeningStage)
+    {
         this.pirateCoveOpeningStage = pirateCoveOpeningStage;
+        return this;
+    }
+
+    public Room increasePirateCoveOpeningStage() {
+        this.pirateCoveOpeningStage++;
         return this;
     }
 
@@ -81,5 +74,18 @@ public class Room
     public Room getNextRoom(Direction direction){
 
         return getNeighborRooms().get(direction);
+    }
+
+    @Override
+    public boolean equals(Object obj)
+    {
+        if(obj instanceof Room room)
+        {
+            return room.getRoomName() == this.getRoomName();
+        }
+        else
+        {
+            return false;
+        }
     }
 }
