@@ -126,101 +126,10 @@ public class Main
 //    }
 //
 //
-//    private static Room freddysPath(Room currentRoom)
-//    {
-//        RoomName currentRoomsName = currentRoom.getRoomName();
-//
-//        switch (currentRoomsName) {
-//
-//            case RoomName.SHOWSTAGE, RoomName.EASTHALL, RoomName.RESTROOMS:
-//                return currentRoom.getNextRoom(Direction.SOUTH1);
-//
-//            case RoomName.DININGAREA:
-//                return currentRoom.getNextRoom(Direction.EAST);
-//
-//            case RoomName.KITCHEN, RoomName.EASTHALLCORNER:
-//                return currentRoom.getNextRoom(Direction.WEST1);
-//
-//        }
-//        return currentRoom;
-//    }
 //
 //
-//    private static Room booniesPath(Room currentRoom)
-//    {
-//        RoomName currentRoomsName = currentRoom.getRoomName();
 //
-//        System.out.println("Boonie war grade in: " + currentRoomsName);
-//        switch (currentRoomsName) {
-//
-//            case RoomName.SHOWSTAGE:
-//                if (randomBoolean()) {
-//                    return currentRoom.getNextRoom(Direction.SOUTH1); // Dining Area
-//
-//                } else {
-//                    return currentRoom.getNextRoom(Direction.WEST1); // Backstage
-//
-//                }
-//            case RoomName.DININGAREA:
-//                return currentRoom.getNextRoom(Direction.SOUTH1); // West Hall
-//
-//            case RoomName.BACKSTAGE:
-//                return currentRoom.getNextRoom(Direction.SOUTH1); // West Hall
-//
-//            case RoomName.WESTHALL:
-//                if (randomBoolean()) {
-//                    return currentRoom.getNextRoom(Direction.SOUTH1); // West Hall Corner
-//
-//                } else {
-//                    return currentRoom.getNextRoom(Direction.WEST1); // Supply Closet
-//
-//                }
-//            case RoomName.WESTHALLCORNER:
-//                if (randomBoolean()) {
-//                    return currentRoom.getNextRoom(Direction.NORTH); // Supply Closet
-//
-//                } else {
-//                    return currentRoom.getNextRoom(Direction.EAST); // West Door
-//
-//                }
-//            case RoomName.SUPPLYCLOSET:
-//                return currentRoom.getNextRoom(Direction.EAST); // West Hall
-//
-//        }
-//        return currentRoom;
-//    }
-//
-//    private static Room chicasPath(Room currentRoom)
-//    {
-//        RoomName currentRoomsName = currentRoom.getRoomName();
-//
-//        switch (currentRoomsName) {
-//
-//            case RoomName.SHOWSTAGE:
-//                if (randomBoolean()) {
-//                    return currentRoom.getNextRoom(Direction.SOUTH1); // Dining Area
-//
-//                } else {
-//                    return currentRoom.getNextRoom(Direction.EAST); // Restrooms
-//
-//                }
-//            case RoomName.DININGAREA:
-//                return currentRoom.getNextRoom(Direction.SOUTH3); // Kitchen
-//
-//            case RoomName.RESTROOMS:
-//                return currentRoom.getNextRoom(Direction.SOUTH1); // Kitchen
-//
-//            case RoomName.KITCHEN, RoomName.EASTHALLCORNER:
-//                return currentRoom.getNextRoom(Direction.WEST1); // East Hall / East Door
-//
-//            case RoomName.EASTHALL:
-//                return currentRoom.getNextRoom(Direction.SOUTH1); // East Hall Corner
-//
-//
-//        }
-//        return currentRoom;
-//    }
-//
+
 //    private static Room foxxysPath(Room currentRoom)
 //    {
 //        return currentRoom.setPirateCoveOpeningStage(+1);
