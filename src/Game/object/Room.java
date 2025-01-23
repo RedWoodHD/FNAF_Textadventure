@@ -15,6 +15,19 @@ public class Room
     private boolean doorClosed;
     private int pirateCoveOpeningStage = 0;
 
+    @Override
+    public boolean equals(Object obj)
+    {
+        if(obj instanceof Room room)
+        {
+            return room.getRoomName() == this.getRoomName();
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     public Room(RoomName roomName)
     {
         this.roomName = roomName;
