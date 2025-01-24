@@ -1,7 +1,7 @@
 package Game.text_message;
 
-import static Game.text_message.Colors.magenta;
-import static Game.text_message.Colors.reset;
+import static Game.text_message.Color.magenta;
+import static Game.text_message.Color.reset;
 
 /**Diese Klasse wird verwendet, um die Karte auf der Console auszugeben.
  *Dazu wird folgende Methode genutzt: {@link #printMap()}

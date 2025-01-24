@@ -71,8 +71,12 @@ public class Room
         return this;
     }
 
+    /**
+     *
+     * @param direction
+     * @return
+     */
     public Room getNextRoom(Direction direction){
-
         return getNeighborRooms().get(direction);
     }
 
