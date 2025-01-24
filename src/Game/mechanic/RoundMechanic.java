@@ -10,8 +10,6 @@ import static Game.text_message.Color.*;
 
 public class RoundMechanic
 {
-    EnemyMoveMechanic enemyMoveMechanic = new EnemyMoveMechanic();
-
     public void startRound(int roundNumber, Pizzeria pizzeria)
     {
 //        Alle Gegner Variablen zuweisen um diese besser zu nutzen.
@@ -26,10 +24,16 @@ public class RoundMechanic
         bonnie.makeBonnieMoveToHisNextRoom();
         chica.makeChicaMoveToHerNextRoom();
         foxxy.increaseFoxxysNextStage();
-
+//        Printe Mapstatus
         System.out.print("Round: " +roundNumber);
         pizzeria.setEnergyLeft(pizzeria.getEnergyLeft()-2);
         System.out.println(" Energy: "+pizzeria.getEnergyLeft());
+
+//        Printe alle Positionen
+        System.out.println(red+freddy.getName()+reset+"Befindet sich in:  "+red+freddy.getMyRoomsName()+reset);
+        System.out.println(red+bonnie.getName()+reset+"Befindet sich in:  "+red+bonnie.getMyRoomsName()+reset);
+        System.out.println(red+chica.getName()+reset+"Befindet sich in:  "+red+chica.getMyRoomsName()+reset);
+        System.out.println(red+foxxy.getName()+reset+"Befindet sich in:  "+red+foxxy.getWhereAmI().getPirateCoveOpeningStage()+reset);
     }
 
     /**
