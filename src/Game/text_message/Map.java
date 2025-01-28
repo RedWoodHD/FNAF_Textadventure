@@ -11,7 +11,7 @@ public class Map
     /**Die Methode gibt die Karte auf der Console aus.
      * Die Karte hat keinerlei Logik, sie ist rein optisch und zum verständnis des Spielers.
      */
-    private static void printMap()
+    public static void printMap()
     {
         System.out.print(magenta);
         System.out.println("""
@@ -42,5 +42,7 @@ public class Map
         System.out.print(reset);
 //        Folgende Zeichen wurden für die Map genutzt:
 // ┼,┬,┴,├,┤,═,║,┌,┐,└,┘,─,│,
+//╔════════════════════╗
+//╚════════════════════╝
     }
 }
