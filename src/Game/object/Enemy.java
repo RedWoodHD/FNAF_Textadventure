@@ -40,36 +40,60 @@ public class Enemy
 
     public void makeFreddyMoveToHisNextRoom()
     {
-        if (name.equals(EnemyName.FREDDY)) {
-            switch (whereAmI.getRoomName()) {
-                case RoomName.SHOWSTAGE, RoomName.EASTHALL, RoomName.RESTROOMS:
-                    moveCurrentRoomToNeighbor(Direction.SOUTH1);
-                    break;
-                case RoomName.DININGAREA:
-                    moveCurrentRoomToNeighbor(Direction.EAST);
-                    break;
-                case RoomName.KITCHEN, RoomName.EASTHALLCORNER:
-                    moveCurrentRoomToNeighbor(Direction.WEST1);
-                    break;
+        if (canIMove()) {
+            if (name.equals(EnemyName.FREDDY)) {
+                switch (whereAmI.getRoomName()) {
+                    case RoomName.SHOWSTAGE, RoomName.EASTHALL, RoomName.RESTROOMS:
+                        moveCurrentRoomToNeighbor(Direction.SOUTH1);
+                        break;
+                    case RoomName.DININGAREA:
+                        moveCurrentRoomToNeighbor(Direction.EAST);
+                        break;
+                    case RoomName.KITCHEN, RoomName.EASTHALLCORNER:
+                        moveCurrentRoomToNeighbor(Direction.WEST1);
+                        break;
+                }
             }
         }
-
     }
 
 
     public void makeBonnieMoveToHisNextRoom()
     {
-        if (name.equals(EnemyName.BONNIE)) {
-            switch (whereAmI.getRoomName()) {
-                case RoomName.SHOWSTAGE, RoomName.EASTHALL, RoomName.RESTROOMS:
-                    moveCurrentRoomToNeighbor(Direction.SOUTH1);
-                    break;
-                case RoomName.DININGAREA:
-                    moveCurrentRoomToNeighbor(Direction.EAST);
-                    break;
-                case RoomName.KITCHEN, RoomName.EASTHALLCORNER:
-                    moveCurrentRoomToNeighbor(Direction.WEST1);
-                    break;
+        if (canIMove()) {
+            if (name.equals(EnemyName.BONNIE)) {
+                switch (whereAmI.getRoomName()) {
+                    case RoomName.SHOWSTAGE:
+                        if (randomBoolean()) {
+                            moveCurrentRoomToNeighbor(Direction.SOUTH1); // Dining Area
+                            break;
+                        } else {
+                            moveCurrentRoomToNeighbor(Direction.WEST1); // Backstage
+                            break;
+                        }
+                    case RoomName.DININGAREA, RoomName.BACKSTAGE:
+                        moveCurrentRoomToNeighbor(Direction.SOUTH1); // West Hall
+                        break;
+                    case RoomName.WESTHALL:
+                        if (randomBoolean()) {
+                            moveCurrentRoomToNeighbor(Direction.SOUTH1); // West Hall Corner
+                            break;
+                        } else {
+                            moveCurrentRoomToNeighbor(Direction.WEST1); // Supply Closet
+                            break;
+                        }
+                    case RoomName.WESTHALLCORNER:
+                        if (randomBoolean()) {
+                            moveCurrentRoomToNeighbor(Direction.NORTH); // Supply Closet
+                            break;
+                        } else {
+                            moveCurrentRoomToNeighbor(Direction.EAST); // West Door
+                            break;
+                        }
+                    case RoomName.SUPPLYCLOSET:
+                        moveCurrentRoomToNeighbor(Direction.EAST); // West Hall
+                        break;
+                }
             }
         }
     }
@@ -81,34 +105,34 @@ public class Enemy
      */
     public void makeChicaMoveToHerNextRoom()
     {
-        if (whereAmI != null) {
-            if (name.equals(EnemyName.CHICA)) {
-                switch (whereAmI.getRoomName()) {
-                    case RoomName.SHOWSTAGE:
-                        if (RoundMechanic.randomBoolean()) {
-                            moveCurrentRoomToNeighbor(Direction.SOUTH1); // Dining Area
+        if (canIMove()) {
+            if (whereAmI != null) {
+                if (name.equals(EnemyName.CHICA)) {
+                    switch (whereAmI.getRoomName()) {
+                        case RoomName.SHOWSTAGE:
+                            if (RoundMechanic.randomBoolean()) {
+                                moveCurrentRoomToNeighbor(Direction.SOUTH1); // Dining Area
+                                break;
+                            } else {
+                                moveCurrentRoomToNeighbor(Direction.EAST); // Restrooms
+                                break;
+                            }
+                        case RoomName.DININGAREA:
+                            moveCurrentRoomToNeighbor(Direction.SOUTH3); // Kitchen
                             break;
-                        } else {
-                            moveCurrentRoomToNeighbor(Direction.EAST); // Restrooms
+                        case RoomName.RESTROOMS:
+                            moveCurrentRoomToNeighbor(Direction.SOUTH1); // Kitchen
                             break;
-                        }
-                    case RoomName.DININGAREA:
-                        moveCurrentRoomToNeighbor(Direction.SOUTH3); // Kitchen
-                        break;
-                    case RoomName.RESTROOMS:
-                        moveCurrentRoomToNeighbor(Direction.SOUTH1); // Kitchen
-                        break;
-                    case RoomName.KITCHEN, RoomName.EASTHALLCORNER:
-                        moveCurrentRoomToNeighbor(Direction.WEST1); // East Hall / East Door
-                        break;
-                    case RoomName.EASTHALL:
-                        moveCurrentRoomToNeighbor(Direction.SOUTH1); // East Hall Corner
-                        break;
+                        case RoomName.KITCHEN, RoomName.EASTHALLCORNER:
+                            moveCurrentRoomToNeighbor(Direction.WEST1); // East Hall / East Door
+                            break;
+                        case RoomName.EASTHALL:
+                            moveCurrentRoomToNeighbor(Direction.SOUTH1); // East Hall Corner
+                            break;
+                    }
                 }
             }
         }
-
-
     }
 
     /**
@@ -118,8 +142,10 @@ public class Enemy
 
     public void increaseFoxxysNextStage()
     {
-        if (name.equals(EnemyName.FOXXY)) {
-            whereAmI.increasePirateCoveOpeningStage();
+        if (canIMove()) {
+            if (name.equals(EnemyName.FOXXY)) {
+                whereAmI.increasePirateCoveOpeningStage();
+            }
         }
     }
 
