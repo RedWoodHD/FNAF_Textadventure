@@ -31,7 +31,7 @@ public class EnemyManager
         allEnemiesMap.put(EnemyName.FREDDY, createEnemy(EnemyName.FREDDY, roomManager.getAllRooms().get(RoomName.SHOWSTAGE), 5));
         allEnemiesMap.put(EnemyName.BONNIE, createEnemy(EnemyName.BONNIE, roomManager.getAllRooms().get(RoomName.SHOWSTAGE), 3));
         allEnemiesMap.put(EnemyName.CHICA, createEnemy(EnemyName.CHICA, roomManager.getAllRooms().get(RoomName.SHOWSTAGE), 4));
-        allEnemiesMap.put(EnemyName.FOXXY, createEnemy(EnemyName.FOXXY, roomManager.getAllRooms().get(RoomName.PIRATECOVE), 7));
+        allEnemiesMap.put(EnemyName.FOXXY, createEnemy(EnemyName.FOXXY, roomManager.getAllRooms().get(RoomName.PIRATECOVE), 8));
 
         return allEnemiesMap;
     }
