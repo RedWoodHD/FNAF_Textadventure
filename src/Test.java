@@ -1,6 +1,7 @@
 //import javax.swing.*;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 public class Test {
     public static void main(String[] args) {
@@ -15,6 +16,7 @@ public class Test {
 //            System.out.println((int) (Math.random() * 2)+1);
 //
 //        }
+
 
 
 
