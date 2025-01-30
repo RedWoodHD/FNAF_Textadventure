@@ -1,6 +1,6 @@
 package Game.factor;
 
-public enum UserInput
+public enum PossibleUserCommands
 {
     SKIP("Skip", " Skip Round", "1"),
     USE_CAMERA("Use Camera", "Camera", "Open Camera" , "2"),
@@ -10,7 +10,7 @@ public enum UserInput
 
     private final String[] commandAliases;
 
-    UserInput(String... commandAliases)
+    PossibleUserCommands(String... commandAliases)
     {
         this.commandAliases = commandAliases;
     }
@@ -20,10 +20,10 @@ public enum UserInput
         return commandAliases;
     }
 
-    public static UserInput interpretUserInput(String userInput)
+    public static PossibleUserCommands interpretUserInput(String userInput)
     {
-        UserInput[] allComands = UserInput.values();
-        for(UserInput command : allComands)
+        PossibleUserCommands[] allComands = PossibleUserCommands.values();
+        for(PossibleUserCommands command : allComands)
         {
             for(String commandAlias : command.getCommandAliases())
             {

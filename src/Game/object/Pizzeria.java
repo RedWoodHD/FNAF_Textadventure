@@ -1,5 +1,6 @@
 package Game.object;
 
+import Game.factor.CameraName;
 import Game.factor.EnemyName;
 import Game.factor.RoomName;
 import java.util.Map;
@@ -9,13 +10,15 @@ public class Pizzeria
     private Integer energyLeft;
     private Map<RoomName, Room> roomMap;
     private Map<EnemyName,Enemy> enemyMap;
+    private Map<CameraName,Camera> cameraMap;
 
 
-    public Pizzeria(Integer energyLeft, Map<RoomName, Room> roomMap, Map<EnemyName, Enemy> enemyMap)
+    public Pizzeria(Integer energyLeft, Map<RoomName, Room> roomMap, Map<EnemyName, Enemy> enemyMap, Map<CameraName, Camera> cameraMap)
     {
         this.energyLeft = energyLeft;
         this.roomMap = roomMap;
         this.enemyMap = enemyMap;
+        this.cameraMap = cameraMap;
     }
     /**Diese Methode liefert einen schnelleren Zugriff auf {@link Enemy}'s.
      * Sie nimmt den {@link EnemyName} des gewünschten {@link Enemy}'s und gibt diesen zurück.

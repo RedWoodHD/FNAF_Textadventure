@@ -1,7 +1,12 @@
 package Game.mechanic;
 
 import Game.factor.EnemyName;
+import Game.factory.CameraFactory;
+import Game.factory.EnemyFactory;
+import Game.factory.RoomFactory;
+import Game.manager.EnemyManager;
 import Game.manager.PizzeriaManager;
+import Game.manager.RoomManager;
 import Game.text_message.GameInformation;
 
 import static Game.text_message.Map.printMap;
@@ -10,15 +15,18 @@ public class FnafGame
 {
     public static void runGame()
     {
-        PizzeriaManager pizzeriaManager = new PizzeriaManager();
+        RoomFactory roomFactory = new RoomFactory();
+        EnemyFactory enemyFactory = new EnemyFactory(roomFactory.getAllRooms());
+        CameraFactory cameraFactory = new CameraFactory(roomFactory.getAllRooms());
+        RoomManager roomManager = new RoomManager();
+        EnemyManager enemyManager = new EnemyManager();
         RoundMechanic roundMechanic = new RoundMechanic();
         InputMechanic inputMechanic = new InputMechanic();
-        System.out.println(pizzeriaManager.getEnemyManager().getEnemyMap().get(EnemyName.FREDDY).getLevel());
+
         printMap();
 
         for (int i = 1; i <= 20 ; i++) {
-            roundMechanic.startRound(i,pizzeriaManager.getPizzeria());
-//            pizzeriaManager.getPizzeria().getRoomMap().get(RoomName.OFFICE).setCamera()
+            roundMechanic.startRound(i);
 
         }
         GameInformation gameInformation = new GameInformation();

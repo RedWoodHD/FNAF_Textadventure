@@ -1,15 +1,20 @@
 package Game.manager;
 
+import Game.factor.CameraName;
 import Game.factor.EnemyName;
 import Game.factor.RoomName;
+import Game.factory.RoomFactory;
+import Game.object.Camera;
 import Game.object.Enemy;
 import Game.object.Pizzeria;
 import Game.object.Room;
+
 import java.util.Map;
 
-/**Diese Klasse repräsentiert eine Pizzeria. Sie verwaltet alle nötigen Objekte für die Pizzeria.<br>
+/**
+ * Diese Klasse repräsentiert eine Pizzeria. Sie verwaltet alle nötigen Objekte für die Pizzeria.<br>
  * Diese Klasse soll es vereinfachen die {@link Pizzeria} zu nutzen.<br>
- * Sie hat einen {@link RoomManager} fürs Verwalten der {@link Room}'s.<br>
+ * Sie hat einen {@link RoomFactory} fürs Verwalten der {@link Room}'s.<br>
  * Sie hat einen {@link EnemyManager} fürs Verwalten der {@link Enemy}'s.<br>
  * Sie hat eine {@link Map} fürs Speichern aller {@link Room}'s.<br>
  * Sie hat eine {@link Map} fürs Speichern aller {@link Enemy}'s.<br>
@@ -18,24 +23,54 @@ import java.util.Map;
  */
 public class PizzeriaManager
 {
-    private RoomManager roomManager = new RoomManager();
-    private EnemyManager enemyManager = new EnemyManager();
-    private Map<RoomName, Room> pizzeriaAllRooms = roomManager.getAllRooms();
-    private Map<EnemyName, Enemy> pizzeriaAllEnemies = enemyManager.getEnemyMap();
-    private Pizzeria pizzeria = new Pizzeria(100, pizzeriaAllRooms, pizzeriaAllEnemies);
+    private Map<RoomName, Room> pizzeriaAllRooms;
+    private Map<EnemyName, Enemy> pizzeriaAllEnemies;
+    private Map<CameraName, Camera> pizzeriaAllCameras;
+    private Pizzeria pizzeria;
 
-
-
-    public RoomManager getRoomManager()
+    public PizzeriaManager()
     {
-        return roomManager;
+        RoomFactory roomManager = new RoomFactory();
+        EnemyManager enemyManager = new EnemyManager(roomManager);
+//        CameraManager cameraManager = new CameraManager(roomManager.getAllRooms(),);
+        pizzeriaAllRooms = roomManager.getAllRooms();
+        pizzeriaAllEnemies = enemyManager.getEnemyMap();
+//        pizzeriaAllCameras = cameraManager.getAllCameras();
+        pizzeria = new Pizzeria(100, pizzeriaAllRooms, pizzeriaAllEnemies, pizzeriaAllCameras);
     }
 
-    public PizzeriaManager setRoomManager(RoomManager roomManager)
+//    public CameraManager getCameraManager()
+//    {
+//        return cameraManager;
+//    }
+//
+//    public PizzeriaManager setCameraManager(CameraManager cameraManager)
+//    {
+//        this.cameraManager = cameraManager;
+//        return this;
+//    }
+
+    public Map<CameraName, Camera> getPizzeriaAllCameras()
     {
-        this.roomManager = roomManager;
+        return pizzeriaAllCameras;
+    }
+
+    public PizzeriaManager setPizzeriaAllCameras(Map<CameraName, Camera> pizzeriaAllCameras)
+    {
+        this.pizzeriaAllCameras = pizzeriaAllCameras;
         return this;
     }
+
+//    public RoomManager getRoomManager()
+//    {
+//        return roomManager;
+//    }
+//
+//    public PizzeriaManager setRoomManager(RoomManager roomManager)
+//    {
+//        this.roomManager = roomManager;
+//        return this;
+//    }
 
     public Map<RoomName, Room> getPizzeriaAllRooms()
     {
@@ -48,16 +83,16 @@ public class PizzeriaManager
         return this;
     }
 
-    public EnemyManager getEnemyManager()
-    {
-        return enemyManager;
-    }
+//    public EnemyManager getEnemyManager()
+//    {
+//        return enemyManager;
+//    }
 
-    public PizzeriaManager setEnemyManager(EnemyManager enemyManager)
-    {
-        this.enemyManager = enemyManager;
-        return this;
-    }
+//    public PizzeriaManager setEnemyManager(EnemyManager enemyManager)
+//    {
+//        this.enemyManager = enemyManager;
+//        return this;
+//    }
 
     public Map<EnemyName, Enemy> getPizzeriaAllEnemies()
     {

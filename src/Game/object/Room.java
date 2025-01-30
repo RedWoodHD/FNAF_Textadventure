@@ -11,13 +11,25 @@ public class Room
 {
     private RoomName roomName;
     private Map<Direction, Room> neighborRooms;
-    private Camera camera ;
+    private Camera camera;
+    private Enemy whatEnemyIsInsideMe;
     private boolean doorClosed;
     private int pirateCoveOpeningStage = 0;
 
     public Room(RoomName roomName)
     {
         this.roomName = roomName;
+    }
+
+    public Enemy getWhatEnemyIsInsideMe()
+    {
+        return whatEnemyIsInsideMe;
+    }
+
+    public Room setWhatEnemyIsInsideMe(Enemy whatEnemyIsInsideMe)
+    {
+        this.whatEnemyIsInsideMe = whatEnemyIsInsideMe;
+        return this;
     }
 
     public int getPirateCoveOpeningStage() {
