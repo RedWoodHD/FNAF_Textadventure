@@ -8,9 +8,9 @@ import java.util.Map;
 public class Pizzeria
 {
     private Integer energyLeft;
-    private Map<RoomName, Room> roomMap;
-    private Map<EnemyName,Enemy> enemyMap;
-    private Map<CameraName,Camera> cameraMap;
+    private  Map<RoomName, Room> roomMap;
+    private  Map<EnemyName,Enemy> enemyMap;
+    private final Map<CameraName,Camera> cameraMap;
 
 
     public Pizzeria(Integer energyLeft, Map<RoomName, Room> roomMap, Map<EnemyName, Enemy> enemyMap, Map<CameraName, Camera> cameraMap)
@@ -91,5 +91,8 @@ public class Pizzeria
         return this;
     }
 
-
+    public Map<CameraName, Camera> getCameraMap()
+    {
+        return cameraMap;
+    }
 }

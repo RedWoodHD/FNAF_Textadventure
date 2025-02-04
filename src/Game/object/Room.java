@@ -1,7 +1,9 @@
 package Game.object;
 import Game.factor.Direction;
+import Game.factor.EnemyName;
 import Game.factor.RoomName;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -12,7 +14,7 @@ public class Room
     private RoomName roomName;
     private Map<Direction, Room> neighborRooms;
     private Camera camera;
-    private Enemy whatEnemyIsInsideMe;
+    private final Map<EnemyName,Enemy> enemiesContained = new HashMap<>();
     private boolean doorClosed;
     private int pirateCoveOpeningStage = 0;
 
@@ -21,16 +23,12 @@ public class Room
         this.roomName = roomName;
     }
 
-    public Enemy getWhatEnemyIsInsideMe()
+    public Map<EnemyName, Enemy> getEnemiesContained()
     {
-        return whatEnemyIsInsideMe;
+        return enemiesContained;
     }
 
-    public Room setWhatEnemyIsInsideMe(Enemy whatEnemyIsInsideMe)
-    {
-        this.whatEnemyIsInsideMe = whatEnemyIsInsideMe;
-        return this;
-    }
+
 
     public int getPirateCoveOpeningStage() {
         return pirateCoveOpeningStage;

@@ -1,92 +1,73 @@
 package Game.mechanic;
 
 import Game.factor.EnemyName;
-import Game.factor.RoomName;
 import Game.factor.PossibleUserCommands;
+import Game.factor.RoomName;
+import Game.manager.CameraManager;
 import Game.manager.EnemyManager;
 import Game.manager.PizzeriaManager;
-import Game.object.Enemy;
-import Game.object.Pizzeria;
+import Game.manager.RoomManager;
 import Game.text_message.Color;
 import Game.text_message.GameInformation;
-import Game.text_message.RoomArt;
 
 public class RoundMechanic
 {
-    private final EnemyManager enemyManager;
+    private final PizzeriaManager pizzeriaManager;
 
-    public RoundMechanic(EnemyManager enemyManager)
+    public RoundMechanic(PizzeriaManager pizzeriaManager)
     {
-        this.enemyManager = enemyManager;
+        this.pizzeriaManager = pizzeriaManager;
     }
 
-    public void startRound(int roundNumber,Pizzeria pizzeria)
+    public void startRound(int roundNumber)
     {
 //        Alle Gegner Variablen zuweisen um diese besser zu nutzen.
         Color colors = new Color();
+        RoomManager roomManager = pizzeriaManager.getRoomManager();
+        EnemyManager enemyManager = pizzeriaManager.getEnemyManager();
+        CameraManager  cameraManager = pizzeriaManager.getCameraManager();
+        roomManager.setEnemyManager(enemyManager);
         GameInformation gameInformation = new GameInformation();
-        Enemy freddy = pizzeria.getEnemy(EnemyName.FREDDY);
-        Enemy bonnie = pizzeria.getEnemy(EnemyName.BONNIE);
-        Enemy chica = pizzeria.getEnemy(EnemyName.CHICA);
-        Enemy foxxy = pizzeria.getEnemy(EnemyName.FOXXY);
+        if (roundNumber == 1){
+            roomManager.addEnemyToRoom(EnemyName.FREDDY, RoomName.SHOWSTAGE);
+            roomManager.addEnemyToRoom(EnemyName.BONNIE, RoomName.SHOWSTAGE);
+            roomManager.addEnemyToRoom(EnemyName.CHICA, RoomName.SHOWSTAGE);
+            roomManager.addEnemyToRoom(EnemyName.FOXXY, RoomName.PIRATECOVE);
+        }
 
 //        Make Everyone walk his way to the door
         if (roundNumber > 3)
         {
 //            Gegner bewegen sich
+            enemyManager.moveEveryEnemyOneFurther(roomManager);
 
-            freddy.makeFreddyMoveToHisNextRoom();
-            bonnie.makeBonnieMoveToHisNextRoom();
-            chica.makeChicaMoveToHerNextRoom();
-            foxxy.increaseFoxxysNextStage();
-
-            freddy.getWhereAmI().setWhatEnemyIsInsideMe(freddy);
-            bonnie.getWhereAmI().setWhatEnemyIsInsideMe(bonnie);
-            chica.getWhereAmI().setWhatEnemyIsInsideMe(chica);
-            foxxy.getWhereAmI().setWhatEnemyIsInsideMe(foxxy);
-
+//            roomManager.removeEnemyFromRoom(EnemyName.BONNIE, RoomName.SHOWSTAGE);
+//            roomManager.removeEnemyFromRoom(EnemyName.CHICA, RoomName.SHOWSTAGE);
         }
 
 //        Printe Mapstatus
         gameInformation.printRoundHeader(roundNumber);
 
 //        gameInformation.printBonnieInCloset();
-        getPizzeria().setEnergyLeft(getPizzeria().getEnergyLeft() - 2);
-        System.out.println("Energylevel: " + getPizzeria().getEnergyLeft());
+        pizzeriaManager.decreasePizzeriaEnergyLevel();
+        System.out.println("Energylevel: " + pizzeriaManager.getPizzeria().getEnergyLeft());
 
         InputMechanic inputMechanic = new InputMechanic();
-        reactToUserInput();
+        reactToUserInput(cameraManager,pizzeriaManager,inputMechanic);
 
-        if (bonnie.getMyRoomsName().equals(RoomName.SUPPLYCLOSET))
-        {
-            RoomArt roomArt = new RoomArt();
-            roomArt.printBonnieInsideCloset();
-        }
-//
 
-//        Printe alle Positionen
-//        System.out.print(red + freddy.getName() + reset + "Befindet sich in:  " + red + freddy.getMyRoomsName() + reset);
-//        System.out.println(" "+freddy.isHaveIBeenObserved());
-//        System.out.print(red + bonnie.getName() + reset + "Befindet sich in:  " + red + bonnie.getMyRoomsName() + reset);
-//        System.out.println(" "+bonnie.isHaveIBeenObserved());
-//        System.out.print(red + chica.getName() + reset + "Befindet sich in:  " + red + chica.getMyRoomsName() + reset);
-//        System.out.println(" "+chica.isHaveIBeenObserved());
-//        System.out.print(red + foxxy.getName() + reset + "Befindet sich in:  " + red + foxxy.getWhereAmI().getPirateCoveOpeningStage() + reset);
-//        System.out.println(" "+foxxy.isHaveIBeenObserved());
     }
 
-    public void reactToUserInput()
+    public void reactToUserInput(CameraManager cameraManager, PizzeriaManager pizzeriaManager, InputMechanic inputMechanic)
     {
-        InputMechanic inputMechanic = new InputMechanic();
         String userInput = inputMechanic.askUserForHisMove();
-
         PossibleUserCommands possibleUserCommands = PossibleUserCommands.interpretUserInput(userInput);
         if (possibleUserCommands != null)
         {
             switch (possibleUserCommands)
             {
                 case SKIP -> handleSkipCommand();
-                case USE_CAMERA -> handleUseCameraCommand();
+                case USE_CAMERA -> handleUseCameraCommand(cameraManager, pizzeriaManager, inputMechanic);
                 case CLOSE_LEFT_DOOR -> handleCloseLeftDoorCommand();
                 case CLOSE_RIGHT_DOOR -> handleCloseRightDoorCommand();
                 case EXIT_GAME -> handleExitGameCommand();
@@ -100,6 +81,7 @@ public class RoundMechanic
 
     private void handleExitGameCommand()
     {
+
     }
 
     private void handleCloseRightDoorCommand()
@@ -110,8 +92,11 @@ public class RoundMechanic
     {
     }
 
-    private void handleUseCameraCommand()
+    private void handleUseCameraCommand(CameraManager cameraManager, PizzeriaManager pizzeriaManager,InputMechanic inputMechanic)
     {
+        cameraManager.printCameraAccess();
+        cameraManager.useChosenCamera(inputMechanic.askUserForCameraUse(),pizzeriaManager.getPizzeria());
+        pizzeriaManager.decreasePizzeriaEnergyLevel();
     }
 
     private void handleSkipCommand()

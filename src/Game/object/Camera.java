@@ -2,11 +2,9 @@ package Game.object;
 
 import Game.factor.CameraName;
 import Game.factor.EnemyName;
-import Game.manager.PizzeriaManager;
-import Game.text_message.Color;
-import Game.text_message.GameInformation;
 
 import java.util.List;
+import java.util.Map;
 
 import static Game.factor.EnemyName.*;
 import static Game.text_message.Color.*;
@@ -27,29 +25,31 @@ public class Camera
     {
         if (pizzeria.getEnergyLeft() > 0)
         {
-            Enemy whatDoISee = getWhatEnemyDoISee();
-            switch (whatDoISee.getName())
-            {
-                case FREDDY:
-                    System.out.println("You can see " + magenta + FREDDY + reset + " in the Corner of the Room");
-                    whatDoISee.setHaveIBeenObserved(true);
-                    break;
-                case BONNIE:
-                    System.out.println("You can see " + blue + BONNIE + reset + " in the Corner of the Room");
-                    whatDoISee.setHaveIBeenObserved(true);
-                    break;
-                case CHICA:
-                    System.out.println("You can see " + yellow + CHICA + reset + " in the Corner of the Room");
-                    whatDoISee.setHaveIBeenObserved(true);
-                    break;
-                case FOXXY:
-                    System.out.println("You can see " + red + CHICA + reset + " in Stage: "+whatDoISee.getWhereAmI().getPirateCoveOpeningStage());
-                    whatDoISee.setHaveIBeenObserved(true);
-                    break;
-                default:
-                    System.out.println("You can't see a single Animatronic :D");
-                    break;
+            Map<EnemyName,Enemy> whatDoISee = getWhatEnemyDoISee();
+            if (whatDoISee == null){
+                System.out.println("You are seeing just an empty Room :)");
+                return;
             }
+            if (whatDoISee.get(FREDDY).equals(pizzeria.getEnemy(FREDDY)))
+            {
+                System.out.println("You can see " + magenta + FREDDY + reset + " in the Corner of the Room");
+                pizzeria.getEnemy(FREDDY).setHaveIBeenObserved(true);
+            }
+            if (whatDoISee.get(BONNIE).equals(pizzeria.getEnemy(BONNIE)))
+            {
+                System.out.println("You can see " + blue + BONNIE + reset + " in the Corner of the Room");
+                pizzeria.getEnemy(BONNIE).setHaveIBeenObserved(true);
+            }
+            if (whatDoISee.get(CHICA).equals(pizzeria.getEnemy(CHICA)))
+            {
+                System.out.println("You can see " + yellow + CHICA + reset + " in the Corner of the Room");
+                pizzeria.getEnemy(CHICA).setHaveIBeenObserved(true);
+            } else if (whatDoISee.get(FOXXY).equals(pizzeria.getEnemy(FOXXY)))
+            {
+                System.out.println("You can see " + red + FOXXY + reset + " in Stage: "+pizzeria.getEnemy(FOXXY).getWhereAmI().getPirateCoveOpeningStage());
+                pizzeria.getEnemy(FOXXY).setHaveIBeenObserved(true);
+            } else {System.out.println("You can't see a single Animatronic :D");}
+
             pizzeria.setEnergyLeft(pizzeria.getEnergyLeft() - 5);
         }
         // Kann ich die überhaupt noch benutzen? Ist noch Strom da?
@@ -91,9 +91,9 @@ public class Camera
         return this;
     }
 
-    public Enemy getWhatEnemyDoISee()
+    public Map<EnemyName,Enemy> getWhatEnemyDoISee()
     {
-        return whatRoomDoILookAt.getWhatEnemyIsInsideMe();
+        return whatRoomDoILookAt.getEnemiesContained();
     }
 
     public List<Camera> getConnectedCameras()

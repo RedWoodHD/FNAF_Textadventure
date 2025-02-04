@@ -23,4 +23,10 @@ public class InputMechanic
 //        }
         return scanner.nextLine();
     }
+
+    public int askUserForCameraUse(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Chose you Camera! (!Use Numbers only!)");
+        return scanner.nextInt();
+    }
 }

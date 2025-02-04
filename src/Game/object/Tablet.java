@@ -1,5 +1,7 @@
 package Game.object;
 
+import java.util.List;
+
 /**
  * Diese Klasse representiert das Tablet damit der {@link Player} auf die {@link Camera}'s zugreifen kann. <br>
  * Das {@link Tablet} hat eine {@link Camera} auf die es zugreift.

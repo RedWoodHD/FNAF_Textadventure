@@ -35,6 +35,7 @@ public class CameraFactory
         Camera cam5 = new Camera(CameraName.CAM5);
         Camera cam6 = new Camera(CameraName.CAM6);
         Camera cam7 = new Camera(CameraName.CAM7);
+        Camera freeCam = new Camera(CameraName.FREECAM);
 
 //        Übergebe jeder Kamera ihren Raum
         cam1A.setWhatRoomDoILookAt(allRooms.get(RoomName.SHOWSTAGE));
@@ -110,6 +111,20 @@ public class CameraFactory
         wiresCam3.add(cam1C);
         cam3.setConnectedCameras(wiresCam3);
 
+        List<Camera> wiresFreeCam = new ArrayList<>();
+        wiresFreeCam.add(cam1A);
+        wiresFreeCam.add(cam1B);
+        wiresFreeCam.add(cam1C);
+        wiresFreeCam.add(cam2A);
+        wiresFreeCam.add(cam2B);
+        wiresFreeCam.add(cam3);
+        wiresFreeCam.add(cam4A);
+        wiresFreeCam.add(cam4B);
+        wiresFreeCam.add(cam5);
+        wiresFreeCam.add(cam6);
+        wiresFreeCam.add(cam7);
+        freeCam.setConnectedCameras(wiresFreeCam);
+
 //        Alle Cameras werden den Map hinzugefügt mit Camera Namen.
         allCamerasMap.put(CameraName.CAM1A,cam1A);
         allCamerasMap.put(CameraName.CAM1B,cam1B);
@@ -122,7 +137,13 @@ public class CameraFactory
         allCamerasMap.put(CameraName.CAM5,cam5);
         allCamerasMap.put(CameraName.CAM6,cam6);
         allCamerasMap.put(CameraName.CAM7,cam7);
+        allCamerasMap.put(CameraName.FREECAM,freeCam);
 
         return allCamerasMap;
+    }
+
+    public Map<CameraName, Camera> getAllCameras()
+    {
+        return allCameras;
     }
 }

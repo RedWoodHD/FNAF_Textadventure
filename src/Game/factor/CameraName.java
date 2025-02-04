@@ -12,5 +12,6 @@ public enum CameraName
     CAM4B,
     CAM5,
     CAM6,
-    CAM7;
+    CAM7,
+    FREECAM;
 }

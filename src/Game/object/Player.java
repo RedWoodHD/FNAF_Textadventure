@@ -8,7 +8,7 @@ package Game.object;
 public class Player
 {
     private boolean isAlive = true;
-    private boolean hasTablet;
+    private Tablet tablet;
 
     public boolean isAlive()
     {
@@ -21,14 +21,14 @@ public class Player
         return this;
     }
 
-    public boolean isHasTablet()
+    public Tablet getTablet()
     {
-        return hasTablet;
+        return tablet;
     }
 
-    public Player setHasTablet(boolean hasTablet)
+    public Player setTablet(Tablet tablet)
     {
-        this.hasTablet = hasTablet;
+        this.tablet = tablet;
         return this;
     }
 }

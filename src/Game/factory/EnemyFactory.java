@@ -41,4 +41,8 @@ public class EnemyFactory
         return new Enemy(name, startingPosition, level);
     }
 
+    public Map<EnemyName, Enemy> getAllEnemiesMap()
+    {
+        return allEnemiesMap;
+    }
 }
