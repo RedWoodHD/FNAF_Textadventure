@@ -35,15 +35,16 @@ public class EnemyManager
     {
 
         moveFreddyOneRoomFurther(roomManager);
-        moveBonnieOneRoomFurther();
-        moveChicaOneRoomFurther();
+        moveBonnieOneRoomFurther(roomManager);
+        moveChicaOneRoomFurther(roomManager);
         increaseFoxxysStageByOne();
     }
 
     private void moveFreddyOneRoomFurther(RoomManager roomManager)
     {
         Enemy freddy = enemyMap.get(EnemyName.FREDDY);
-        if (freddy.canIMove()){
+        if (freddy.canIMove())
+        {
 
             Room whereAmI = freddy.getWhereAmI();
             RoomName currentRoomName = whereAmI.getRoomName();
@@ -66,47 +67,73 @@ public class EnemyManager
     private void moveBonnieOneRoomFurther(RoomManager roomManager)
     {
         Enemy bonnie = enemyMap.get(EnemyName.BONNIE);
-        Room whereAmI = bonnie.getWhereAmI();
-        RoomName currentRoomName = whereAmI.getRoomName();
-        Direction newDirection = switch (currentRoomName)
+        if (bonnie.canIMove())
         {
-            case RoomName.SHOWSTAGE -> randomDirectionSouth1West1();
-            case RoomName.DININGAREA, RoomName.BACKSTAGE   ->Direction.SOUTH1; // Backstage
-            case RoomName.WESTHALL -> randomDirectionSouth1West1();
 
-                        moveCurrentRoomToNeighbor(Direction.SOUTH1); // West Hall
-                        break;
-                    case RoomName.WESTHALL:
-                        if (randomBoolean())
-                        {
-                            moveCurrentRoomToNeighbor(Direction.SOUTH1); // West Hall Corner
-                            break;
-                        }
-                        else
-                        {
-                            moveCurrentRoomToNeighbor(Direction.WEST1); // Supply Closet
-                            break;
-                        }
-                    case RoomName.WESTHALLCORNER:
-                        if (randomBoolean())
-                        {
-                            moveCurrentRoomToNeighbor(Direction.NORTH); // Supply Closet
-                            break;
-                        }
-                        else
-                        {
-                            moveCurrentRoomToNeighbor(Direction.EAST); // West Door
-                            break;
-                        }
-                    case RoomName.SUPPLYCLOSET:
-                        moveCurrentRoomToNeighbor(Direction.EAST); // West Hall
-                        break;
-                }
-                Room nextRoom = whereAmI.getNextRoom(newDirection);
-                RoomName nameOfNextRoom = nextRoom.getRoomName();
-                roomManager.moveEnemy(EnemyName.FREDDY, nameOfNextRoom);
-            }
+            Room whereAmI = bonnie.getWhereAmI();
+            RoomName currentRoomName = whereAmI.getRoomName();
+            Direction newDirection = switch (currentRoomName)
+            {
+                case RoomName.SHOWSTAGE,
+                     RoomName.WESTHALL -> randomDirectionSouth1West1();
+                case RoomName.DININGAREA,
+                     RoomName.BACKSTAGE -> Direction.SOUTH1;
+                case RoomName.WESTHALLCORNER -> randomDirectionNorthEAST();
+                case RoomName.SUPPLYCLOSET -> Direction.EAST;
+                default -> throw new IllegalArgumentException("Bewegung funktioniert nicht.");
+            };
+            Room nextRoom = whereAmI.getNextRoom(newDirection);
+            RoomName nameOfNextRoom = nextRoom.getRoomName();
+            roomManager.moveEnemy(EnemyName.BONNIE, nameOfNextRoom);
         }
+    }
+
+
+    private void moveChicaOneRoomFurther(RoomManager roomManager)
+    {
+        Enemy chica = enemyMap.get(EnemyName.CHICA);
+        if (chica.canIMove())
+        {
+            Room whereAmI = chica.getWhereAmI();
+            RoomName currentRoomName = whereAmI.getRoomName();
+            Direction newDirection = switch (currentRoomName)
+            {
+                case RoomName.SHOWSTAGE -> randomDirectionSouth1East();
+                case RoomName.DININGAREA -> Direction.SOUTH3;
+                case RoomName.RESTROOMS -> Direction.SOUTH1;
+                case RoomName.KITCHEN -> Direction.WEST1;
+                case RoomName.EASTHALL -> Direction.SOUTH1;
+                default -> throw new IllegalArgumentException("Bewegung funktioniert nicht.");
+            };
+            Room nextRoom = whereAmI.getNextRoom(newDirection);
+            RoomName nameOfNextRoom = nextRoom.getRoomName();
+            roomManager.moveEnemy(EnemyName.BONNIE, nameOfNextRoom);
+        }
+    }
+
+    private Direction randomDirectionSouth1East()
+    {
+        if (randomBoolean())
+        {
+            return Direction.SOUTH1;
+        }
+        else
+        {
+            return Direction.EAST;
+        }
+    }
+
+    private Direction randomDirectionNorthEAST()
+    {
+        if (randomBoolean())
+        {
+            return Direction.NORTH;
+        }
+        else
+        {
+            return Direction.EAST;
+        }
+    }
 
     private Direction randomDirectionSouth1West1()
     {
@@ -119,13 +146,7 @@ public class EnemyManager
             return Direction.WEST1;
         }
     }
-}
 
-    private void moveChicaOneRoomFurther()
-    {
-        Enemy chica = enemyMap.get(EnemyName.CHICA);
-        chica.makeBonnieMoveToHisNextRoom();
-    }
 
     private void increaseFoxxysStageByOne()
     {
