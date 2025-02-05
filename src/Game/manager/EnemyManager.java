@@ -100,14 +100,23 @@ public class EnemyManager
             {
                 case RoomName.SHOWSTAGE -> randomDirectionSouth1East();
                 case RoomName.DININGAREA -> Direction.SOUTH3;
-                case RoomName.RESTROOMS -> Direction.SOUTH1;
+                case RoomName.RESTROOMS,
+                     RoomName.EASTHALL -> Direction.SOUTH1;
                 case RoomName.KITCHEN -> Direction.WEST1;
-                case RoomName.EASTHALL -> Direction.SOUTH1;
                 default -> throw new IllegalArgumentException("Bewegung funktioniert nicht.");
             };
             Room nextRoom = whereAmI.getNextRoom(newDirection);
             RoomName nameOfNextRoom = nextRoom.getRoomName();
             roomManager.moveEnemy(EnemyName.BONNIE, nameOfNextRoom);
+        }
+    }
+
+    private void increaseFoxxysStageByOne(RoomManager roomManager)
+    {
+        Enemy foxxy = enemyMap.get(EnemyName.FOXXY);
+        if (foxxy.canIMove())
+        {
+            foxxy.getWhereAmI().increasePirateCoveOpeningStage();
         }
     }
 
@@ -147,11 +156,5 @@ public class EnemyManager
         }
     }
 
-
-    private void increaseFoxxysStageByOne()
-    {
-        Enemy foxxy = enemyMap.get(EnemyName.FOXXY);
-        foxxy.increaseFoxxysNextStage();
-    }
 
 }

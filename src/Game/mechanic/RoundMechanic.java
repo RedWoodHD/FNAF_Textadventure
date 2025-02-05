@@ -21,7 +21,7 @@ public class RoundMechanic
 
     public void startRound(int roundNumber)
     {
-//        Alle Gegner Variablen zuweisen um diese besser zu nutzen.
+
         Color colors = new Color();
         RoomManager roomManager = pizzeriaManager.getRoomManager();
         EnemyManager enemyManager = pizzeriaManager.getEnemyManager();
