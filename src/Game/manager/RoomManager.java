@@ -5,7 +5,6 @@ import Game.factor.RoomName;
 import Game.object.Enemy;
 import Game.object.Room;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class RoomManager
@@ -18,6 +17,14 @@ public class RoomManager
         this.allRoomsMap = allRoomsMap;
     }
 
+    public void increaseStage(RoomName roomName){
+        Room roomToIncrease = allRoomsMap.get(roomName);
+        roomToIncrease.increasePirateCoveOpeningStage();
+    }
+    public void resetStage(RoomName roomName){
+        Room roomToReset = allRoomsMap.get(roomName);
+        roomToReset.setPirateCoveOpeningStage(1);
+    }
     public void addEnemyToRoom(EnemyName enemyName, RoomName roomName)
     {
         Room room = allRoomsMap.get(roomName);

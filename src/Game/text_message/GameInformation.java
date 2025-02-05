@@ -109,7 +109,7 @@ public class GameInformation
 
     }
 
-    public void print6AM()
+    public static void print6AM()
     {
         System.out.println("""
                 ░▒▓████████▓▒░░▒▓███████▓▒░      ░▒▓████████▓▒░▒▓████████▓▒░       ░▒▓██████▓▒░░▒▓██████████████▓▒░ \s

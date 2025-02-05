@@ -9,4 +9,5 @@ public enum Direction
     SOUTH3,
     WEST1,
     WEST2,
+    RESET,
 }

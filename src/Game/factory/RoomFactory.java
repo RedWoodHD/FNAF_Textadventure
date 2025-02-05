@@ -39,6 +39,7 @@ public class RoomFactory
         addNeighborRoom(showStage, Direction.SOUTH1, diningArea);
         addNeighborRoom(showStage, Direction.WEST1, backstage);
         addNeighborRoom(showStage, Direction.EAST, restrooms);
+        addNeighborRoom(showStage, Direction.RESET, diningArea);
 
         addNeighborRoom(diningArea, Direction.NORTH, showStage);
         addNeighborRoom(diningArea, Direction.EAST, restrooms);
@@ -47,41 +48,54 @@ public class RoomFactory
         addNeighborRoom(diningArea, Direction.SOUTH3, kitchen);
         addNeighborRoom(diningArea, Direction.WEST1, backstage);
         addNeighborRoom(diningArea, Direction.WEST2, pirateCove);
+        addNeighborRoom(diningArea, Direction.RESET, diningArea);
 
         addNeighborRoom(backstage, Direction.EAST, diningArea);
         addNeighborRoom(backstage, Direction.SOUTH1, westHall);
+        addNeighborRoom(backstage, Direction.RESET, diningArea);
 
         addNeighborRoom(pirateCove, Direction.EAST, diningArea);
+        addNeighborRoom(pirateCove, Direction.RESET, diningArea);
 
         addNeighborRoom(restrooms, Direction.WEST1, diningArea);
         addNeighborRoom(restrooms, Direction.SOUTH1, kitchen);
+        addNeighborRoom(restrooms, Direction.RESET, diningArea);
 
         addNeighborRoom(kitchen, Direction.NORTH, diningArea);
         addNeighborRoom(kitchen, Direction.WEST1, eastHall);
+        addNeighborRoom(kitchen, Direction.RESET, diningArea);
 
         addNeighborRoom(eastHall, Direction.NORTH, diningArea);
         addNeighborRoom(eastHall, Direction.SOUTH1, eastHallCorner);
+        addNeighborRoom(eastHall, Direction.RESET, diningArea);
 
         addNeighborRoom(eastHallCorner, Direction.NORTH, eastHall);
         addNeighborRoom(eastHallCorner, Direction.WEST1, eastDoor);
+        addNeighborRoom(eastHallCorner, Direction.RESET, diningArea);
 
         addNeighborRoom(eastDoor, Direction.WEST1, office);
         addNeighborRoom(eastDoor, Direction.EAST, eastHallCorner);
+        addNeighborRoom(eastDoor, Direction.RESET, diningArea);
 
         addNeighborRoom(westHall, Direction.NORTH, diningArea);
         addNeighborRoom(westHall, Direction.SOUTH1, westHallCorner);
         addNeighborRoom(westHall, Direction.WEST1, supplyCloset);
+        addNeighborRoom(westHall, Direction.RESET, diningArea);
 
         addNeighborRoom(westHallCorner, Direction.NORTH, supplyCloset);
         addNeighborRoom(westHallCorner, Direction.EAST, westDoor);
+        addNeighborRoom(westHallCorner, Direction.RESET, diningArea);
 
         addNeighborRoom(westDoor, Direction.EAST, office);
         addNeighborRoom(westDoor, Direction.WEST1, westHallCorner);
+        addNeighborRoom(westDoor, Direction.RESET, diningArea);
 
         addNeighborRoom(supplyCloset, Direction.EAST, westHall);
+        addNeighborRoom(supplyCloset, Direction.RESET, diningArea);
 
         addNeighborRoom(office, Direction.EAST, eastHallCorner);
         addNeighborRoom(office, Direction.WEST1, westHallCorner);
+        addNeighborRoom(office, Direction.RESET, diningArea);
 
 
 //        Füge der Map jeden Raum hinzu.

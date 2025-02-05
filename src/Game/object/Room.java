@@ -1,4 +1,5 @@
 package Game.object;
+
 import Game.factor.Direction;
 import Game.factor.EnemyName;
 import Game.factor.RoomName;
@@ -14,11 +15,12 @@ public class Room
     private RoomName roomName;
     private Map<Direction, Room> neighborRooms;
     private Camera camera;
-    private final Map<EnemyName,Enemy> enemiesContained = new HashMap<>();
+    private final Map<EnemyName, Enemy> enemiesContained = new HashMap<>();
     private boolean doorClosed;
-    private int pirateCoveOpeningStage = 0;
+    private int pirateCoveOpeningStage = 1;
 
     public Room(RoomName roomName)
+
     {
         this.roomName = roomName;
     }
@@ -29,8 +31,8 @@ public class Room
     }
 
 
-
-    public int getPirateCoveOpeningStage() {
+    public int getPirateCoveOpeningStage()
+    {
         return pirateCoveOpeningStage;
     }
 
@@ -40,60 +42,70 @@ public class Room
         return this;
     }
 
-    public Room increasePirateCoveOpeningStage() {
+    public Room increasePirateCoveOpeningStage()
+    {
         this.pirateCoveOpeningStage++;
         return this;
     }
 
-    public RoomName getRoomName() {
+    public RoomName getRoomName()
+    {
         return roomName;
     }
 
-    public Room setRoomName(RoomName roomName) {
+    public Room setRoomName(RoomName roomName)
+    {
         this.roomName = roomName;
         return this;
     }
 
-    public Map<Direction, Room> getNeighborRooms() {
+    public Map<Direction, Room> getNeighborRooms()
+    {
         return neighborRooms;
     }
 
-    public Room setNeighborRooms(Map<Direction, Room> neighborRooms) {
+    public Room setNeighborRooms(Map<Direction, Room> neighborRooms)
+    {
         this.neighborRooms = neighborRooms;
         return this;
     }
 
-    public Camera getCamera() {
+    public Camera getCamera()
+    {
         return camera;
     }
 
-    public Room setCamera(Camera camera) {
+    public Room setCamera(Camera camera)
+    {
         this.camera = camera;
         return this;
     }
 
-    public boolean isDoorClosed() {
+    public boolean isDoorClosed()
+    {
         return doorClosed;
     }
 
-    public Room setDoorClosed(boolean doorClosed) {
+    public Room setDoorClosed(boolean doorClosed)
+    {
         this.doorClosed = doorClosed;
         return this;
     }
 
     /**
-     *
      * @param direction
+     *
      * @return
      */
-    public Room getNextRoom(Direction direction){
+    public Room getNextRoom(Direction direction)
+    {
         return getNeighborRooms().get(direction);
     }
 
     @Override
     public boolean equals(Object obj)
     {
-        if(obj instanceof Room room)
+        if (obj instanceof Room room)
         {
             return room.getRoomName() == this.getRoomName();
         }

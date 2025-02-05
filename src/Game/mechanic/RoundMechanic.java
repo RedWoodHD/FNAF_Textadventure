@@ -7,6 +7,7 @@ import Game.manager.CameraManager;
 import Game.manager.EnemyManager;
 import Game.manager.PizzeriaManager;
 import Game.manager.RoomManager;
+import Game.object.Player;
 import Game.text_message.Color;
 import Game.text_message.GameInformation;
 
@@ -19,7 +20,7 @@ public class RoundMechanic
         this.pizzeriaManager = pizzeriaManager;
     }
 
-    public void startRound(int roundNumber)
+    public void startRound(int roundNumber, Player player)
     {
 
         Color colors = new Color();
@@ -36,14 +37,6 @@ public class RoundMechanic
         }
 
 //        Make Everyone walk his way to the door
-        if (roundNumber > 3)
-        {
-//            Gegner bewegen sich
-            enemyManager.moveEveryEnemyOneFurther(roomManager);
-
-//            roomManager.removeEnemyFromRoom(EnemyName.BONNIE, RoomName.SHOWSTAGE);
-//            roomManager.removeEnemyFromRoom(EnemyName.CHICA, RoomName.SHOWSTAGE);
-        }
 
 //        Printe Mapstatus
         gameInformation.printRoundHeader(roundNumber);
@@ -53,12 +46,21 @@ public class RoundMechanic
         System.out.println("Energylevel: " + pizzeriaManager.getPizzeria().getEnergyLeft());
 
         InputMechanic inputMechanic = new InputMechanic();
-        reactToUserInput(cameraManager,pizzeriaManager,inputMechanic);
+        reactToUserInput(cameraManager,pizzeriaManager,inputMechanic, enemyManager);
 
+        if (roundNumber > 3)
+        {
+//            Gegner bewegen sich
+            enemyManager.moveEveryEnemyOneFurther(roomManager,player);
+            if (enemyManager.getEnemy(EnemyName.FOXXY).getWhereAmI().getPirateCoveOpeningStage() == 4){
+                System.out.println(EnemyName.FOXXY+" killed you!");
+                player.setAlive(false);
+            }
+        }
 
     }
 
-    public void reactToUserInput(CameraManager cameraManager, PizzeriaManager pizzeriaManager, InputMechanic inputMechanic)
+    public void reactToUserInput(CameraManager cameraManager, PizzeriaManager pizzeriaManager, InputMechanic inputMechanic, EnemyManager enemyManager)
     {
         String userInput = inputMechanic.askUserForHisMove();
         PossibleUserCommands possibleUserCommands = PossibleUserCommands.interpretUserInput(userInput);
@@ -66,8 +68,8 @@ public class RoundMechanic
         {
             switch (possibleUserCommands)
             {
-                case SKIP -> handleSkipCommand();
-                case USE_CAMERA -> handleUseCameraCommand(cameraManager, pizzeriaManager, inputMechanic);
+                case SKIP -> handleSkipCommand(cameraManager);
+                case USE_CAMERA -> handleUseCameraCommand(cameraManager, pizzeriaManager, inputMechanic, enemyManager);
                 case CLOSE_LEFT_DOOR -> handleCloseLeftDoorCommand();
                 case CLOSE_RIGHT_DOOR -> handleCloseRightDoorCommand();
                 case EXIT_GAME -> handleExitGameCommand();
@@ -92,15 +94,16 @@ public class RoundMechanic
     {
     }
 
-    private void handleUseCameraCommand(CameraManager cameraManager, PizzeriaManager pizzeriaManager,InputMechanic inputMechanic)
+    private void handleUseCameraCommand(CameraManager cameraManager, PizzeriaManager pizzeriaManager,InputMechanic inputMechanic,EnemyManager enemyManager)
     {
         cameraManager.printCameraAccess();
-        cameraManager.useChosenCamera(inputMechanic.askUserForCameraUse(),pizzeriaManager.getPizzeria());
+        cameraManager.useChosenCamera(inputMechanic.askUserForCameraUse(),pizzeriaManager.getPizzeria(),enemyManager);
         pizzeriaManager.decreasePizzeriaEnergyLevel();
     }
 
-    private void handleSkipCommand()
+    private void handleSkipCommand(CameraManager cameraManager)
     {
+        cameraManager.resetTablet();
     }
 
     /**
