@@ -52,7 +52,6 @@ public class FnafGame
                 if (player.isAlive()){
                     roundMechanic.startRound(i,player);
                 } else {
-                    System.out.println("YOU DIED!");
                     return;
                 }
             }

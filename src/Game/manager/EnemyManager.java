@@ -6,6 +6,8 @@ import Game.factor.RoomName;
 import Game.object.Enemy;
 import Game.object.Player;
 import Game.object.Room;
+import Game.text_message.DeathMessages;
+import Game.text_message.DeathMessages.*;
 
 import java.util.Map;
 
@@ -36,11 +38,21 @@ public class EnemyManager
     {
 
         moveFreddyOneRoomFurther(roomManager,player);
+        returnIfPlayerIsDead(player);
         moveBonnieOneRoomFurther(roomManager,player);
+        returnIfPlayerIsDead(player);
         moveChicaOneRoomFurther(roomManager,player);
+        returnIfPlayerIsDead(player);
         increaseFoxxysStageByOne(roomManager,player);
     }
 
+    private void returnIfPlayerIsDead(Player player)
+    {
+        if (player.isAlive()){
+            return;
+        }
+        else return return;
+    }
 
 
     private void moveFreddyOneRoomFurther(RoomManager roomManager, Player player)
@@ -128,6 +140,7 @@ public class EnemyManager
         RoomName currentRoomName = foxxy.getWhereAmI().getRoomName();
         if (foxxy.isHaveIBeenObserved()){
             roomManager.resetStage(currentRoomName);
+            foxxy.setHaveIBeenObserved(false);
         } else if (foxxy.canIMove()){
             roomManager.increaseStage(currentRoomName);
         }
@@ -142,18 +155,32 @@ public class EnemyManager
                 return Direction.RESET;
             } else
             {
-                System.out.println(enemy.getName()+" killed you!");
-                player.setAlive(false);
+                if (enemy.getName().equals(EnemyName.FREDDY)){
+                    DeathMessages.FreedysKill();
+                    player.setAlive(false);
+                    return Direction.RESET;
+                }
+                else if (enemy.getName().equals(EnemyName.CHICA))
+                {
+                    DeathMessages.ChicasKill();
+                    player.setAlive(false);
+                    return Direction.RESET;
+                }
             }
-        }
-        if (roomName.equals(RoomName.WESTDOOR))
+        }else
         {
-            if (enemy.getWhereAmI().getNextRoom(Direction.EAST).isDoorClosed()){
-                return Direction.RESET;
-            } else
+            if (roomName.equals(RoomName.WESTDOOR))
             {
-                System.out.println(enemy.getName()+" killed you!");
-                player.setAlive(false);
+                if (enemy.getWhereAmI().getNextRoom(Direction.EAST).isDoorClosed())
+                {
+                    return Direction.RESET;
+                }
+                else
+                {
+                    DeathMessages.BonniesKill();
+                    player.setAlive(false);
+                    return Direction.RESET;
+                }
             }
         }
         return Direction.RESET;

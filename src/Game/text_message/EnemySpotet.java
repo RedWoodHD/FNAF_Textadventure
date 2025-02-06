@@ -11,7 +11,7 @@ public class EnemySpotet
         this.enemy = enemy;
     }
 
-    public String randomEnemyOutput(){
+    public static String randomEnemyOutput(Enemy enemy){
         switch (enemy.getName()){
             case FREDDY -> {
                 return "You are seeing a brown bear";

@@ -1,5 +1,8 @@
 package Game.factor;
 
+/**
+ * Diese Klasse representiert alle Namen die eine {@link Game.object.Camera} haben kann.
+ */
 public enum CameraName
 {
     CAM1A,

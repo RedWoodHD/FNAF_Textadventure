@@ -3,6 +3,7 @@ package Game.mechanic;
 import Game.factor.PossibleUserCommands;
 import Game.text_message.GameInformation;
 
+import java.util.InputMismatchException;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
@@ -21,7 +22,7 @@ public class InputMechanic
         try
         {
             return scanner.nextLine();
-        } catch (NoSuchElementException e)
+        } catch (NoSuchElementException | IllegalStateException e)
         {
             System.out.println("!WRONG INPUT!");
         }
@@ -35,9 +36,21 @@ public class InputMechanic
         {
             return scanner.nextInt();
         }
-        catch (NoSuchElementException e){
+        catch (NoSuchElementException | IllegalStateException e){
             System.out.println("!WRONG INPUT!");
         }
         return 0;
+    }
+
+    public static void toBeContinued(){
+        Scanner scanner = new Scanner(System.in);
+        try
+        {
+            scanner.nextLine();
+        }
+        catch (NoSuchElementException | IllegalStateException e){
+            System.out.println("Don't do that!");
+        }
+
     }
 }

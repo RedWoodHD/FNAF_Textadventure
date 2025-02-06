@@ -186,29 +186,10 @@ public class Enemy
             setWhereAmI(whereAmI.getNextRoom(direction));
         }
     }
-
-    public int getLevel()
-    {
-        return level;
-    }
-
-    public Enemy setLevel(int level)
-    {
-        this.level = level;
-        return this;
-    }
-
     public EnemyName getName()
     {
         return name;
     }
-
-    public Enemy setName(EnemyName name)
-    {
-        this.name = name;
-        return this;
-    }
-
     public Room getWhereAmI()
     {
         return whereAmI;
