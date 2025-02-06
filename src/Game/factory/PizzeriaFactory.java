@@ -30,7 +30,7 @@ public class PizzeriaFactory
         RoomFactory roomFactory = new RoomFactory();
         CameraFactory cameraFactory = new CameraFactory(roomFactory.getAllRooms());
         EnemyFactory enemyFactory = new EnemyFactory(roomFactory.getAllRooms());
-        pizzeria = new Pizzeria(100, roomFactory.getAllRooms(), enemyFactory.getAllEnemiesMap(), cameraFactory.getAllCameras());
+        pizzeria = new Pizzeria(102, roomFactory.getAllRooms(), enemyFactory.getAllEnemiesMap(), cameraFactory.getAllCameras());
     }
 
     public Pizzeria getPizzeria()

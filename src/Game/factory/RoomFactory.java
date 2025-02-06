@@ -93,8 +93,8 @@ public class RoomFactory
         addNeighborRoom(supplyCloset, Direction.EAST, westHall);
         addNeighborRoom(supplyCloset, Direction.RESET, diningArea);
 
-        addNeighborRoom(office, Direction.EAST, eastHallCorner);
-        addNeighborRoom(office, Direction.WEST1, westHallCorner);
+        addNeighborRoom(office, Direction.EAST, eastDoor);
+        addNeighborRoom(office, Direction.WEST1, westDoor);
         addNeighborRoom(office, Direction.RESET, diningArea);
 
 

@@ -25,7 +25,7 @@ public class GameInformation
 
     public void printCommands()
     {
-        System.out.println("1.Skip\t 2.Use Camera\t 3.Close Left Door\t 4.Close Right Door\t 5.Exit Game");
+        System.out.println("1.Skip\t 2.Use Camera\t 3.Close Doors\t 4.Print Map\t 5.Exit Game");
     }
 
     private void printRoundNumber(int roundNumber)

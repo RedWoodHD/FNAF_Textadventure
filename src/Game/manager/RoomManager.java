@@ -1,5 +1,6 @@
 package Game.manager;
 
+import Game.factor.Direction;
 import Game.factor.EnemyName;
 import Game.factor.RoomName;
 import Game.object.Enemy;
@@ -15,6 +16,13 @@ public class RoomManager
     public RoomManager(Map<RoomName, Room> allRoomsMap)
     {
         this.allRoomsMap = allRoomsMap;
+    }
+
+    public void closeDoors(){
+        allRoomsMap.get(RoomName.OFFICE).setDoorClosed(true);
+    }
+    public void openDoors(){
+        allRoomsMap.get(RoomName.OFFICE).setDoorClosed(false);
     }
 
     public void increaseStage(RoomName roomName){
@@ -59,5 +67,24 @@ public class RoomManager
     {
         this.enemyManager = enemyManager;
         return this;
+    }
+
+    public void printEnemiesNextToPlayer(EnemyManager enemyManager)
+    {
+        Map<EnemyName, Enemy> enemiesWest = allRoomsMap.get(RoomName.OFFICE).getNextRoom(Direction.WEST1).getEnemiesContained();
+        Map<EnemyName, Enemy> enemiesEast = allRoomsMap.get(RoomName.OFFICE).getNextRoom(Direction.EAST).getEnemiesContained();
+        if (enemiesEast.get(EnemyName.FREDDY) != null)
+        {
+            System.out.println("You are seeing on the east window: " +enemyManager.getEnemy(EnemyName.FREDDY).getName());
+        }
+        if (enemiesEast.get(EnemyName.CHICA) != null)
+        {
+            System.out.println("You are seeing on the east door: " +enemyManager.getEnemy(EnemyName.CHICA).getName());
+        }
+        if (enemiesWest.get(EnemyName.BONNIE) != null)
+        {
+            System.out.println("You are seeing at the west window: " +enemyManager.getEnemy(EnemyName.BONNIE).getName());
+        }
+
     }
 }

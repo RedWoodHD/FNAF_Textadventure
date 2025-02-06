@@ -4,8 +4,8 @@ public enum PossibleUserCommands
 {
     SKIP("Skip", " Skip Round", "1"),
     USE_CAMERA("Use Camera", "Camera", "Open Camera" , "2"),
-    CLOSE_LEFT_DOOR("Close Left Door", " Close Left", " 3"),
-    CLOSE_RIGHT_DOOR("Close Right Door", " Close Right", "4"),
+    CLOSEDOORS("Close Door", " Close Doors", "3"),
+    PRINTMAP("Print Map", "Map", "4"),
     EXIT_GAME("Exit Game","Leave", "Exit", "5");
 
     private final String[] commandAliases;

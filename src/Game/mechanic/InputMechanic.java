@@ -11,6 +11,8 @@ public class InputMechanic
     /**
      *
      */
+
+
     public String askUserForHisMove(){
         Scanner scanner = new Scanner(System.in);
         GameInformation gameInformation = new GameInformation();

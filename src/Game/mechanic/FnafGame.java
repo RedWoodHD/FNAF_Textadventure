@@ -10,6 +10,9 @@ import Game.object.Player;
 import Game.object.Tablet;
 import Game.text_message.GameInformation;
 
+import java.util.NoSuchElementException;
+import java.util.Scanner;
+
 import static Game.text_message.Map.printMap;
 
 public class FnafGame
@@ -19,11 +22,21 @@ public class FnafGame
         Player player = new Player();
 
             Tablet tablet = new Tablet();
-            if (player.getTablet() == null)
+            while (player.getTablet() == null)
             {
-                System.out.println("To start the game, pick up the Tablet!");
+                Scanner scanner = new Scanner(System.in);
+                System.out.println("To start the game, press any button to pick up the Tablet!");
+                try{
+                    scanner.nextLine();
+                    player.setTablet(tablet);
+                    GameInformation.printExplainingText();
+                }
+                catch (NoSuchElementException e){
+                    System.out.println("Nuhhh uhhh, Gonna start anyway :D");
+                    player.setTablet(tablet);
+                    GameInformation.printExplainingText();
+                }
             }
-            player.setTablet(tablet);
 //        Factory
             PizzeriaFactory pizzeriaFactory = new PizzeriaFactory();
 //        Manager
@@ -34,7 +47,6 @@ public class FnafGame
 //        Machanic
             RoundMechanic roundMechanic = new RoundMechanic(pizzeriaManager);
             InputMechanic inputMechanic = new InputMechanic();
-            printMap();
             for (int i = 1; i <= 20; i++)
             {
                 if (player.isAlive()){

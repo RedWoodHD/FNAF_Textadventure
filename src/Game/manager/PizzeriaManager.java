@@ -17,8 +17,8 @@ public class PizzeriaManager
         this.cameraManager = cameraManager;
     }
 
-    public void decreasePizzeriaEnergyLevel(){
-        pizzeria.setEnergyLeft(pizzeria.getEnergyLeft() - 2);
+    public void decreasePizzeriaEnergyLevel(int value){
+        pizzeria.setEnergyLeft(pizzeria.getEnergyLeft() - value);
     }
 
     public Pizzeria getPizzeria()

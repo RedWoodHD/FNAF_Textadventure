@@ -28,10 +28,10 @@ public class EnemyFactory
     {
 
         Map<EnemyName, Enemy> allEnemiesMap = new HashMap<>();
-        allEnemiesMap.put(EnemyName.FREDDY, createEnemy(EnemyName.FREDDY, roomMap.get(RoomName.SHOWSTAGE), 5));
-        allEnemiesMap.put(EnemyName.BONNIE, createEnemy(EnemyName.BONNIE, roomMap.get(RoomName.SHOWSTAGE), 30));
-        allEnemiesMap.put(EnemyName.CHICA, createEnemy(EnemyName.CHICA, roomMap.get(RoomName.SHOWSTAGE), 4));
-        allEnemiesMap.put(EnemyName.FOXXY, createEnemy(EnemyName.FOXXY, roomMap.get(RoomName.PIRATECOVE), 8));
+        allEnemiesMap.put(EnemyName.FREDDY, createEnemy(EnemyName.FREDDY, roomMap.get(RoomName.SHOWSTAGE), 7));
+        allEnemiesMap.put(EnemyName.BONNIE, createEnemy(EnemyName.BONNIE, roomMap.get(RoomName.SHOWSTAGE), 5));
+        allEnemiesMap.put(EnemyName.CHICA, createEnemy(EnemyName.CHICA, roomMap.get(RoomName.SHOWSTAGE), 6));
+        allEnemiesMap.put(EnemyName.FOXXY, createEnemy(EnemyName.FOXXY, roomMap.get(RoomName.PIRATECOVE), 0));
 
         return allEnemiesMap;
     }

@@ -110,6 +110,7 @@ public class EnemyManager
                      RoomName.EASTHALL -> Direction.SOUTH1;
                 case RoomName.KITCHEN,
                      RoomName.EASTHALLCORNER -> Direction.WEST1;
+                case EASTDOOR -> tryToKill(RoomName.EASTDOOR,chica,player);
                 default -> throw new IllegalArgumentException("Bewegung funktioniert nicht.");
             };
             if (newDirection == null){
