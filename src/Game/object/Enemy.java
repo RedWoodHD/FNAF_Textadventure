@@ -3,32 +3,21 @@ package Game.object;
 import Game.factor.Direction;
 import Game.factor.EnemyName;
 import Game.factor.RoomName;
-import Game.mechanic.RoundMechanic;
+import Game.mechanic.RoundLogic;
 
-import static Game.mechanic.RoundMechanic.randomBoolean;
+import static Game.mechanic.RoundLogic.randomBoolean;
 
+/**
+ * Diese Klasse representiert einen Gegner.
+ *
+ * @author Elias Ganske
+ */
 public class Enemy
 {
-    private EnemyName name;
+    private final EnemyName name;
     private Room whereAmI;
-    private int level;
+    private final int level;
     private boolean haveIBeenObserved;
-
-    /**
-     * {@code Welche Wege nehmen die Animatronics.}<br>
-     * Freddy show stage -> dining area -> restrooms -> Kitchen -> east hall -> east hall corner<br>
-     * If door is closed wait 2 rounds, if still closed move to dining area otherwise kill player<br>
-     * <br>
-     * Boonie Show Stage -> dining area/backstage -> west hall -> supply closet/west hall corner. west hall corner -> Supply closet/west door.<br>
-     * If door is closed go to dining Area, if not kill player after 2 rounds.<br>
-     * <br>
-     * Chica show stage -> dining area/restrooms -> Kitchen(no cam) -> East hall -> East hall corner -> door<br>
-     * If door is closed go to dining Area, if not kill player after 2 rounds<br>
-     * <br>
-     * Foxxy Stage 1 2 3 if Stage 4 he will kill you, if look at Foxxy freeze him for 2 rounds<br>
-     * <br>
-     * cam06 disabled Chica or Freddy make a Sound
-     */
 
 
     public Enemy(EnemyName name, Room whereAmI, int level)
@@ -110,7 +99,7 @@ public class Enemy
                 if (name.equals(EnemyName.CHICA)) {
                     switch (whereAmI.getRoomName()) {
                         case RoomName.SHOWSTAGE:
-                            if (RoundMechanic.randomBoolean()) {
+                            if (RoundLogic.randomBoolean()) {
                                 moveCurrentRoomToNeighbor(Direction.SOUTH1); // Dining Area
                                 break;
                             } else {

@@ -1,23 +1,21 @@
 package Game.mechanic;
 
-import Game.factor.PossibleUserCommands;
+import Game.factor.PossibleUserCommand;
 import Game.text_message.GameInformation;
 
-import java.util.InputMismatchException;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
-public class InputMechanic
+public class InputLogic
 {
     /**
-     *
+     * Diese Methode liefert eine {@link String Benutzereingabe} zurück.
+     * Es werden erst die {@link PossibleUserCommand Möglichen Benutzereingaben} auf der Konsole ausgegeben und dann wird eingelesen was der Benutzer eingibt.
      */
-
-
     public String askUserForHisMove(){
         Scanner scanner = new Scanner(System.in);
         GameInformation gameInformation = new GameInformation();
-        PossibleUserCommands userInput = null;
+        PossibleUserCommand userInput = null;
         gameInformation.printCommands();
         try
         {
@@ -42,6 +40,10 @@ public class InputMechanic
         return 0;
     }
 
+    /**
+     * Diese Methode liest eine Konsolen eingabe ein und macht nichts mir dieser.
+     * Der Sinn dahinter ist es eine art delay einzubauen damit der Benutzer den Text lesen kann und dann mit einer beliebigen eingabe weiter zu machen.
+     */
     public static void toBeContinued(){
         Scanner scanner = new Scanner(System.in);
         try

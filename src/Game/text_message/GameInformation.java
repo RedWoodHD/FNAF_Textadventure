@@ -23,11 +23,22 @@ public class GameInformation
         System.out.println("");
     }
 
+    /**
+     * Gebe die möglichen benutzereingaben auf der Konsole aus.<br>
+     * Diese haben keine Verbindung zur Klasse {@link Game.factor.PossibleUserCommand}.
+     * @author EGA
+     */
     public void printCommands()
     {
         System.out.println("1.Skip\t 2.Use Camera\t 3.Close Doors\t 4.Print Map\t 5.Exit Game");
     }
 
+    /**
+     * Diese Methode gibt die derzeitige Runden-Nummer auf der Konsole aus.<br>
+     * Dies passiert als {@link RoundArt "Runden Kunst"}, diese sind nur verschiedene Strings um die Konsolenausgabe zu verschönern.
+     * @param roundNumber gibt an welche {@link RoundArt "Runden Kunst"} (Ascii Kunst) ausgegeben werden soll.
+     * @author EGA
+     */
     private void printRoundNumber(int roundNumber)
     {
         RoundArt roundArt = new RoundArt();
@@ -95,6 +106,11 @@ public class GameInformation
         }
     }
 
+    /**
+     * Diese Methode sorgt für eine Schönere ausgabe von einer Runde auf der Konsole.
+     * @param roundNumber diese {@link Integer Zahl} sagt aus welche Runde ausgegeben werden soll.
+     * @author EGA
+     */
     public void printRoundHeader(int roundNumber)
     {
         System.out.println("╔══════════════════════════════════════════════════════════════════════════");
@@ -102,13 +118,11 @@ public class GameInformation
         System.out.println("╚══════════════════════════════════════════════════════════════════════════");
     }
 
-    public void printBonnieInCloset()
-    {
-        RoomArt roomArt = new RoomArt();
-        roomArt.printBonnieInsideCloset();
-
-    }
-
+    /**
+     * Diese Methode sorgt für eine Konsolenausgabe.
+     *  Es wird "06:00 AM" als String auf der Konsole ausgegeben, als Ascii Kunst.
+     * @author EGA
+     */
     public static void print6AM()
     {
         System.out.println("""

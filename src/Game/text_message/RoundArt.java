@@ -1,5 +1,8 @@
 package Game.text_message;
 
+/**
+ * Diese Klasse speichert alle {@link String Ascii Kunst} Bilder von allen Runden, in {@link String}'s.<br>
+ */
 public class RoundArt
 {
     String round01 = """

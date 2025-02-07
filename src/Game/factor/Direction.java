@@ -1,7 +1,9 @@
 package Game.factor;
 
 /**
- * Diese Klasse representiert alle möglichen richtungen in die man von einem {@link Game.object.Room} über die {@link Game.object.Room#neighborRooms}gehen kann.
+ * Diese Klasse representiert alle möglichen richtungen die von den {@link Game.object.Enemy Gegnern} genutzt werden, um von einem {@link Game.object.Room Raum} zum anderen zu gehen.
+ *
+ *
  */
 public enum Direction
 {

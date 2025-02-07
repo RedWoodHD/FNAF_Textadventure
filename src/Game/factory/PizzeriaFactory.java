@@ -12,14 +12,8 @@ import Game.object.Room;
 import java.util.Map;
 
 /**
- * Diese Klasse repräsentiert eine Pizzeria. Sie verwaltet alle nötigen Objekte für die Pizzeria.<br>
- * Diese Klasse soll es vereinfachen die {@link Pizzeria} zu nutzen.<br>
- * Sie hat einen {@link RoomFactory} fürs Verwalten der {@link Room}'s.<br>
- * Sie hat einen {@link EnemyManager} fürs Verwalten der {@link Enemy}'s.<br>
- * Sie hat eine {@link Map} fürs Speichern aller {@link Room}'s.<br>
- * Sie hat eine {@link Map} fürs Speichern aller {@link Enemy}'s.<br>
- * Sie hat eine {@link Pizzeria} mit den notwendigen Bedingungen fürs Erstellen.<br>
- * {@link int}
+ * Diese Klasse erstellt eine {@link Pizzeria}, mit allen nötigen Objekten.<br>
+ * @author EGA
  */
 public class PizzeriaFactory
 {

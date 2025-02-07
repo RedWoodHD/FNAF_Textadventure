@@ -16,6 +16,7 @@ public class Camera
     private CameraName cameraName;
     private Room whatRoomDoILookAt;
     private boolean isPlayerLookingAtIt;
+    private String description;
 
     public Camera(CameraName cameraName)
     {
@@ -28,43 +29,49 @@ public class Camera
         {
             Map<EnemyName, Enemy> whatDoISee = getWhatEnemyDoISee();
             Enemy freddy = enemyManager.getEnemy(FREDDY);
+            System.out.println(description);
             if (whatDoISee == null)
             {
-                System.out.println("You are seeing just an empty Room :)");
                 return;
             }
 
             if (whatDoISee.get(FREDDY) != null)
             {
-                System.out.println("You can see " + magenta + FREDDY + reset + " in the Corner of the Room");
+                System.out.println(grey + FREDDY + reset + " is inside this room");
                 enemyManager.getEnemy(FREDDY).setHaveIBeenObserved(true);
             }
             if (whatDoISee.get(BONNIE) != null)
             {
-                System.out.println("You can see " + blue + BONNIE + reset + " in the Corner of the Room");
+                System.out.println(magenta + BONNIE + reset + " is inside this room");
                 enemyManager.getEnemy(BONNIE).setHaveIBeenObserved(true);
             }
             if (whatDoISee.get(CHICA) != null)
             {
-                System.out.println("You can see " + yellow + CHICA + reset + " in the Corner of the Room");
+                System.out.println(yellow + CHICA + reset + " is inside this room");
                 enemyManager.getEnemy(CHICA).setHaveIBeenObserved(true);
             }
             else if (whatDoISee.get(FOXXY) != null)
             {
-                System.out.println("You can see " + red + FOXXY + reset + " in Stage: " + pizzeria.getEnemy(FOXXY).getWhereAmI().getPirateCoveOpeningStage());
+                System.out.println(red + FOXXY + reset + " is in Stage: " + pizzeria.getEnemy(FOXXY).getWhereAmI().getPirateCoveOpeningStage());
                 enemyManager.getEnemy(FOXXY).setHaveIBeenObserved(true);
             }
-            else
-            {
-                System.out.println("You can't see a single Animatronic :D");
-            }
-
             pizzeria.setEnergyLeft(pizzeria.getEnergyLeft() - 5);
         }
         // Kann ich die überhaupt noch benutzen? Ist noch Strom da?
         // Geprinted was ich sehe.
         // Auswirkungen auf enemies (gesehen/nicht gesehen)
         // Energie wird vom Haus abgezogen.
+    }
+
+    public String getDescription()
+    {
+        return description;
+    }
+
+    public Camera setDescription(String description)
+    {
+        this.description = description;
+        return this;
     }
 
     public CameraName getCameraName()

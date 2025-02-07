@@ -1,7 +1,15 @@
 package Game.manager;
 
+import Game.object.Camera;
 import Game.object.Pizzeria;
+import Game.object.Tablet;
 
+/**
+ * Diese Klasse soll die {@link Pizzeria} verwalten.<br>
+ * Sie bietet eine Methode, um die {@link Pizzeria#energyLeft verbleibende Energie} zu verringern:<br>
+ * -{@link #decreasePizzeriaEnergyLevel(int)} <br>
+ * @author EGA
+ */
 public class PizzeriaManager
 {
     private final Pizzeria pizzeria;
@@ -17,6 +25,11 @@ public class PizzeriaManager
         this.cameraManager = cameraManager;
     }
 
+    /**
+     *Diese Methode verringert die {@link Pizzeria#energyLeft Energie} von der {@link Pizzeria}.
+     * @param value die {@link Integer Zahl}, zum Verringern.
+     * @author EGA
+     */
     public void decreasePizzeriaEnergyLevel(int value){
         pizzeria.setEnergyLeft(pizzeria.getEnergyLeft() - value);
     }

@@ -1,28 +1,37 @@
 package Game.manager;
 
 import Game.factor.CameraName;
-import Game.factor.RoomName;
 import Game.object.Camera;
 import Game.object.Pizzeria;
-import Game.object.Room;
 import Game.object.Tablet;
 
 import java.util.Map;
 
+/**
+ * Diese Klasse soll die {@link Camera Kamera}'s verwalten.<br>
+ * Sie bietet die nötigen Methoden, um die {@link Camera Camera}'s für verschiedene Zwecke zu nutzen:<br>
+ * -{@link #printCameraAccess()} <br>
+ * -{@link #useChosenCamera(int, Pizzeria, EnemyManager)} <br>
+ *  Die Klasse kann auch das {@link Tablet} reseten. -> {@link #resetTabletsCameraAccess()}.
+ * @author EGA
+ */
 public class CameraManager
 {
-    private final Map<RoomName, Room> allRooms;
     private final Map<CameraName, Camera> allCameras;
     private final Tablet tablet;
 
 
-    public CameraManager(Map<RoomName, Room> allRooms, Map<CameraName, Camera> allCameras, Tablet tablet)
+    public CameraManager( Map<CameraName, Camera> allCameras, Tablet tablet)
     {
-        this.allRooms = allRooms;
         this.allCameras = allCameras;
         this.tablet = tablet;
     }
 
+    /**
+     * Diese Methode gibt auf der Console aus, welche {@link Camera kamera}'s wir benutzen können.<br>
+     * Reine Ausgabe, basierend auf der {@link Camera Kamera} die wir als letztes genutzt haben.<br>
+     * @author EGA
+     */
     public void printCameraAccess()
     {
         Camera currentCamera = tablet.getWhatCameraDoILookAt();
@@ -46,6 +55,14 @@ public class CameraManager
         }
         System.out.println();
     }
+
+    /**
+     * Diese Methode verarbeitet die {@link Integer Benutzereingabe}.
+     * @param userInput Die {@link Integer Zahl} die der Benutzer eingegeben hat.
+     * @param pizzeria Die {@link Pizzeria} in der wir uns befinden.
+     * @param enemyManager Der {@link EnemyManager} den wir nutzen, um auf die {@link Game.object.Enemy Gegner} zuzugreifen.
+     * @author EGA
+     */
 
     public void useChosenCamera(int userInput, Pizzeria pizzeria, EnemyManager enemyManager)
     {
@@ -116,7 +133,11 @@ public class CameraManager
         }
     }
 
-    public void resetTablet()
+    /**
+     * Diese Methode setzt die{@link Camera Kamera} auf die das {@link Tablet} zugriff hat,<br>
+     * wieder auf die {@link Camera Kamera} -> {@link CameraName#FREECAM}.
+     */
+    public void resetTabletsCameraAccess()
     {
         tablet.setWhatCameraDoILookAt(allCameras.get(CameraName.FREECAM));
     }

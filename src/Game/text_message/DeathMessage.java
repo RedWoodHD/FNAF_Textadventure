@@ -1,13 +1,24 @@
 package Game.text_message;
 
-import static Game.mechanic.InputMechanic.toBeContinued;
+import static Game.mechanic.InputLogic.toBeContinued;
 import static Game.text_message.Color.*;
 
-public class DeathMessages
+/**
+ * Diese Klasse ist dafür da die todes Nachrichten von den {@link Game.object.Enemy Gegner} auf der Konsole auszugeben.
+ */
+public class DeathMessage
 {
+    private static final String deathMessage = """
+            
+            """;
 
-
+    /**
+     * Gibt die todes Nachricht von {@link Game.object.Enemy Freddy} auf der Konsole aus.<br>
+     * Dies sind nur Strings und eine Konsolen eingabe um eine art Pause einzubauen bevor der nächste Text ausgegeben wird.
+     * @author EGA
+     */
     public static void FreedysKill(){
+
         System.out.println("=============================================================================================");
         System.out.println("============================================================================================="+red);
         System.out.println("You are hearing music playing, it's a calm friendly melody, probably played a lot for kids.");
@@ -28,6 +39,11 @@ public class DeathMessages
         youDiedMessage();
     }
 
+    /**
+     * Gibt die todes Nachricht von {@link Game.object.Enemy Bonnie} auf der Konsole aus.<br>
+     * Dies sind nur Strings und eine Konsolen eingabe um eine art Pause einzubauen bevor der nächste Text ausgegeben wird.
+     * @author EGA
+     */
     public static void BonniesKill()
     {
         System.out.println("=============================================================================================");
@@ -50,6 +66,11 @@ public class DeathMessages
         youDiedMessage();
     }
 
+    /**
+     * Gibt die todes Nachricht von {@link Game.object.Enemy Chica} auf der Konsole aus.<br>
+     * Dies sind nur Strings und eine Konsolen eingabe um eine art Pause einzubauen bevor der nächste Text ausgegeben wird.
+     * @author EGA
+     */
     public static void ChicasKill(){
         System.out.println("=============================================================================================");
         System.out.println("============================================================================================="+red);
@@ -70,6 +91,11 @@ public class DeathMessages
         System.out.println();
         youDiedMessage();
     }
+    /**
+     * Gibt die todes Nachricht von {@link Game.object.Enemy Foxxy} auf der Konsole aus.<br>
+     * Dies sind nur Strings und eine Konsolen eingabe um eine art Pause einzubauen bevor der nächste Text ausgegeben wird.
+     * @author EGA
+     */
     public static void FoxxysKill()
     {
         System.out.println("=============================================================================================");
@@ -92,6 +118,10 @@ public class DeathMessages
         youDiedMessage();
     }
 
+    /**
+     * Gebe per Ascii Kunst die Nachricht "You Died!" auf der Konsole aus
+     * @author EGA
+     */
     private static void youDiedMessage(){
         System.out.println(red+"""
                  /$$     /$$ /$$$$$$  /$$   /$$       /$$$$$$$  /$$$$$$ /$$$$$$$$ /$$$$$$$  /$$

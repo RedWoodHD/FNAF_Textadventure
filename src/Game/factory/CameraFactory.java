@@ -4,11 +4,20 @@ import Game.factor.CameraName;
 import Game.factor.RoomName;
 import Game.object.Camera;
 import Game.object.Room;
+import Game.text_message.RoomDescription;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+/**
+ * Diese Klasse representiert eine Kamera Fabrik um alle {@link Camera}'s zu erstellen.<br>
+ * Dafür wird die Methode {@link #createAllCameras()} genutzt.<br>
+ * Sie hat Zugriff auf Zwei {@link HashMap}'s mit allen {@link Camera}'s<br>
+ * Sie hat Zugriff auf Zwei {@link HashMap}'s mit allen  {@link Room}'s
+ * @author EGA
+ */
 
 public class CameraFactory
 {
@@ -21,6 +30,11 @@ public class CameraFactory
         this.allCameras = createAllCameras();
     }
 
+    /**
+     *Diese Methode erstellt alle {@link Camera Cameras} mit ihren dazugehörigen {@link Camera#connectedCameras verbundenen} {@link Camera Cameras}.<br>
+     *Die {@link Camera Kamera}'s kennen ihre {@link Room Räume}.
+     * @return  Eine {@link Map allCamerasMap} {@code key:} {@link CameraName}   {@code value:} {@link Camera}
+     */
     private Map<CameraName, Camera> createAllCameras(){
         Map<CameraName, Camera> allCamerasMap = new HashMap<>();
 //        Erstelle jede Camera
@@ -49,6 +63,19 @@ public class CameraFactory
         cam5.setWhatRoomDoILookAt(allRooms.get(RoomName.BACKSTAGE));
         cam6.setWhatRoomDoILookAt(allRooms.get(RoomName.KITCHEN));
         cam7.setWhatRoomDoILookAt(allRooms.get(RoomName.RESTROOMS));
+
+//        Übergebe jeder Kamera ihre description.
+        cam1A.setDescription(RoomDescription.showStage);
+        cam1B.setDescription(RoomDescription.diningArea);
+        cam1C.setDescription(RoomDescription.pirateCove);
+        cam2A.setDescription(RoomDescription.westHall);
+        cam2B.setDescription(RoomDescription.westHallCorner);
+        cam3.setDescription(RoomDescription.supplyCloset);
+        cam4A.setDescription(RoomDescription.eastHall);
+        cam4B.setDescription(RoomDescription.eastHallCorner);
+        cam5.setDescription(RoomDescription.backstage);
+        cam6.setDescription(RoomDescription.kitchen);
+        cam7.setDescription(RoomDescription.restrooms);
 
 //        Gebe jeder Camera ihre verbundenen Cameras als Liste mit.
         List<Camera> wiresCam1A = new ArrayList<>();

@@ -6,6 +6,9 @@ import Game.object.Room;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Diese Klasse erzeugt alle {@link Room Räume}.
+ */
 public class RoomFactory
 {
     private final Map<RoomName, Room> allRooms;
@@ -116,13 +119,13 @@ public class RoomFactory
         return allRooms;
     }
 
-    private static Room createRoom(RoomName roomName)
+    private Room createRoom(RoomName roomName)
     {
         Room room = new Room(roomName);
         return room;
     }
 
-    private static void addNeighborRoom(Room currentRoom, Direction direction, Room roomToAdd)
+    private void addNeighborRoom(Room currentRoom, Direction direction, Room roomToAdd)
     {
 
         if (currentRoom.getNeighborRooms() == null) {

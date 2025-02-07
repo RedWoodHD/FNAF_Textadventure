@@ -2,6 +2,7 @@ package Game.factor;
 
 /**
  * Diese Klasse representiert alle Namen die eine {@link Game.object.Camera} haben kann.
+ * @author EGA
  */
 public enum CameraName
 {

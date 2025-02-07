@@ -1,5 +1,8 @@
 package Game.factor;
 
+/**
+ * Diese Klasse representiert alle Namen die ein {@link Game.object.Room Raum} haben kann.
+ */
 public enum RoomName
 {
     DININGAREA,

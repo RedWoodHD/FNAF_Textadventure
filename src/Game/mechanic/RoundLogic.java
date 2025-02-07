@@ -1,7 +1,7 @@
 package Game.mechanic;
 
 import Game.factor.EnemyName;
-import Game.factor.PossibleUserCommands;
+import Game.factor.PossibleUserCommand;
 import Game.factor.RoomName;
 import Game.manager.CameraManager;
 import Game.manager.EnemyManager;
@@ -9,16 +9,17 @@ import Game.manager.PizzeriaManager;
 import Game.manager.RoomManager;
 import Game.object.Player;
 import Game.text_message.Color;
-import Game.text_message.*;
+import Game.text_message.DeathMessage;
+import Game.text_message.GameInformation;
 import Game.text_message.Map;
 
 import static Game.text_message.Color.*;
 
-public class RoundMechanic
+public class RoundLogic
 {
     private final PizzeriaManager pizzeriaManager;
 
-    public RoundMechanic(PizzeriaManager pizzeriaManager)
+    public RoundLogic(PizzeriaManager pizzeriaManager)
     {
         this.pizzeriaManager = pizzeriaManager;
     }
@@ -56,7 +57,7 @@ public class RoundMechanic
             System.out.println(red + "NO ENERGY" + reset);
         }
 
-        InputMechanic inputMechanic = new InputMechanic();
+        InputLogic inputMechanic = new InputLogic();
         reactToUserInput(cameraManager, pizzeriaManager, inputMechanic, enemyManager, player);
 
 
@@ -66,20 +67,25 @@ public class RoundMechanic
             enemyManager.moveEveryEnemyOneFurther(roomManager, player);
             if (enemyManager.getEnemy(EnemyName.FOXXY).getWhereAmI().getPirateCoveOpeningStage() >= 4)
             {
-                DeathMessages.FoxxysKill();
+                DeathMessage.FoxxysKill();
                 player.setAlive(false);
             }
         }
         roomManager.openDoors();
     }
 
-    public void reactToUserInput(CameraManager cameraManager, PizzeriaManager pizzeriaManager, InputMechanic inputMechanic, EnemyManager enemyManager, Player player)
+    public void reactToUserInput(
+            CameraManager cameraManager,
+            PizzeriaManager pizzeriaManager,
+            InputLogic inputMechanic,
+            EnemyManager enemyManager,
+            Player player)
     {
         RoomManager roomManager = pizzeriaManager.getRoomManager();
         int pizzeriaEnergyLeft = pizzeriaManager.getPizzeria().getEnergyLeft();
 
         String userInput = inputMechanic.askUserForHisMove();
-        PossibleUserCommands possibleUserCommands = PossibleUserCommands.interpretUserInput(userInput);
+        PossibleUserCommand possibleUserCommands = PossibleUserCommand.interpretUserInput(userInput);
         if (possibleUserCommands != null)
         {
             if (pizzeriaEnergyLeft > 0)
@@ -90,13 +96,14 @@ public class RoundMechanic
                     case USE_CAMERA ->
                             handleUseCameraCommand(cameraManager, pizzeriaManager, inputMechanic, enemyManager);
                     case CLOSEDOORS -> handleCloseDoorsCommand(roomManager, pizzeriaManager, cameraManager);
-                    case PRINTMAP -> handlePrintMapCommand(cameraManager, pizzeriaManager, inputMechanic, enemyManager,player);
+                    case PRINTMAP ->
+                            handlePrintMapCommand(cameraManager, pizzeriaManager, inputMechanic, enemyManager, player);
                     case EXIT_GAME -> handleExitGameCommand(player);
                 }
             }
             else
             {
-                if (possibleUserCommands == PossibleUserCommands.SKIP)
+                if (possibleUserCommands == PossibleUserCommand.SKIP)
                 {
                     handleSkipCommand(cameraManager, enemyManager, roomManager);
                 }
@@ -112,24 +119,24 @@ public class RoundMechanic
         }
     }
 
-    private void handlePrintMapCommand(CameraManager cameraManager, PizzeriaManager pizzeriaManager, InputMechanic inputMechanic, EnemyManager enemyManager,Player player)
+    private void handlePrintMapCommand(CameraManager cameraManager, PizzeriaManager pizzeriaManager, InputLogic inputMechanic, EnemyManager enemyManager, Player player)
     {
         Map.printMap();
-        reactToUserInput(cameraManager, pizzeriaManager, inputMechanic, enemyManager,player);
+        reactToUserInput(cameraManager, pizzeriaManager, inputMechanic, enemyManager, player);
     }
 
     private void handleSkipCommand(CameraManager cameraManager, EnemyManager enemyManager, RoomManager roomManager)
     {
         System.out.println(blue + "Round skipped" + reset);
-        roomManager.printEnemiesNextToPlayer(enemyManager);
-        cameraManager.resetTablet();
+        roomManager.printEnemiesNextToOffice(enemyManager);
+        cameraManager.resetTabletsCameraAccess();
     }
 
     private void handleCloseDoorsCommand(RoomManager roomManager, PizzeriaManager pizzeriaManager, CameraManager cameraManager)
     {
         roomManager.closeDoors();
         pizzeriaManager.decreasePizzeriaEnergyLevel(15);
-        cameraManager.resetTablet();
+        cameraManager.resetTabletsCameraAccess();
     }
 
     private void handleExitGameCommand(Player player)
@@ -137,7 +144,7 @@ public class RoundMechanic
         player.setAlive(false);
     }
 
-    private void handleUseCameraCommand(CameraManager cameraManager, PizzeriaManager pizzeriaManager, InputMechanic inputMechanic, EnemyManager enemyManager)
+    private void handleUseCameraCommand(CameraManager cameraManager, PizzeriaManager pizzeriaManager, InputLogic inputMechanic, EnemyManager enemyManager)
     {
         cameraManager.printCameraAccess();
         cameraManager.useChosenCamera(inputMechanic.askUserForCameraUse(), pizzeriaManager.getPizzeria(), enemyManager);
