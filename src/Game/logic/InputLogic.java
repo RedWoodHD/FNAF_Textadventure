@@ -1,4 +1,4 @@
-package Game.mechanic;
+package Game.logic;
 
 import Game.factor.PossibleUserCommand;
 import Game.text_message.GameInformation;
@@ -38,6 +38,27 @@ public class InputLogic
             System.out.println("!WRONG INPUT!");
         }
         return 0;
+    }
+
+    /**
+     * Diese Methode fragt den Benutzer ob er ein neues Spiel spielen möchten und gibt entweder {@link true} oder {@link false} zurück.
+     * @return {@link true} bei Yes und {@link false} bei nein.
+     */
+    public static boolean askForNewGame(){
+        Scanner scanner = new Scanner(System.in);
+        try
+        {
+            System.out.println("Do you want to play a new game?");
+            System.out.println("1.Yes\t 2.No");
+            String userInput =scanner.nextLine();
+            if (userInput.equalsIgnoreCase("Yes") || userInput.equalsIgnoreCase("1")){
+                return true;
+            }
+            else return false;
+        } catch (NoSuchElementException | IllegalStateException e){
+            System.out.println("Don't do that!");
+            return false;
+        }
     }
 
     /**

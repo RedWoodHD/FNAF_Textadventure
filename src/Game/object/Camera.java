@@ -63,11 +63,6 @@ public class Camera
         // Energie wird vom Haus abgezogen.
     }
 
-    public String getDescription()
-    {
-        return description;
-    }
-
     public Camera setDescription(String description)
     {
         this.description = description;
@@ -78,29 +73,11 @@ public class Camera
     {
         return cameraName;
     }
-
-    public Camera setCameraName(CameraName cameraName)
-    {
-        this.cameraName = cameraName;
-        return this;
-    }
-
-    public Room getWhatRoomDoILookAt()
-    {
-        return whatRoomDoILookAt;
-    }
-
     public Camera setWhatRoomDoILookAt(Room whatRoomDoILookAt)
     {
         this.whatRoomDoILookAt = whatRoomDoILookAt;
         return this;
     }
-
-    public boolean isPlayerLookingAtIt()
-    {
-        return isPlayerLookingAtIt;
-    }
-
     public Camera setPlayerLookingAtIt(boolean playerLookingAtIt)
     {
         isPlayerLookingAtIt = playerLookingAtIt;

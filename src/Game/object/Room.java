@@ -53,11 +53,6 @@ public class Room
         return roomName;
     }
 
-    public Room setRoomName(RoomName roomName)
-    {
-        this.roomName = roomName;
-        return this;
-    }
 
     public Map<Direction, Room> getNeighborRooms()
     {

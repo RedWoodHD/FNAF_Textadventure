@@ -3,9 +3,9 @@ package Game.object;
 import Game.factor.Direction;
 import Game.factor.EnemyName;
 import Game.factor.RoomName;
-import Game.mechanic.RoundLogic;
+import Game.logic.RoundLogic;
 
-import static Game.mechanic.RoundLogic.randomBoolean;
+import static Game.logic.RoundLogic.randomBoolean;
 
 /**
  * Diese Klasse representiert einen Gegner.
@@ -152,16 +152,17 @@ public class Enemy
 
     /**
      * Die Methode liefert einen {@link boolean}, ob der {@link Enemy} sich bewegen darf oder nicht.<br>
-     * Dazu nimmt er eine zufällige Zahl zwischen 1 und 10 und schaut, ob diese größer als sein {@link Enemy#level} ist.<br>
-     * Wenn er gesichtet wurde {@link Enemy#haveIBeenObserved}, wird der zufällige {@link int} um 2 verringert.<br>
+     * Dazu nimmt er eine zufällige Zahl zwischen 1 und 13 und schaut, ob diese größer als sein {@link Enemy#level} ist.<br>
+     * Wenn er gesichtet wurde {@link Enemy#haveIBeenObserved}, wird der zufällige {@link int} um 5 verringert.<br>
      *
      * @return True oder False
+     * @author EGA
      */
     public boolean canIMove()
     {
-        int number = (int) (Math.random() * 12) + 1;
+        int number = (int) (Math.random() * 13) + 1;
         if (haveIBeenObserved) {
-            number = number - 2;
+            number = number - 5;
         }
         if (number < level) {
             return true;
@@ -200,4 +201,5 @@ public class Enemy
         this.haveIBeenObserved = haveIBeenObserved;
         return this;
     }
+
 }

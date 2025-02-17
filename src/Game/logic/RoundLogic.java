@@ -1,13 +1,11 @@
-package Game.mechanic;
+package Game.logic;
 
 import Game.factor.EnemyName;
 import Game.factor.PossibleUserCommand;
 import Game.factor.RoomName;
-import Game.manager.CameraManager;
-import Game.manager.EnemyManager;
-import Game.manager.PizzeriaManager;
-import Game.manager.RoomManager;
+import Game.manager.*;
 import Game.object.Player;
+import Game.object.Tablet;
 import Game.text_message.Color;
 import Game.text_message.DeathMessage;
 import Game.text_message.GameInformation;
@@ -15,6 +13,11 @@ import Game.text_message.Map;
 
 import static Game.text_message.Color.*;
 
+/**
+ * Diese Klasse ist da um die ganze Logik einer Runde darzustellen und Methoden anzubieten, um eine Runde zu starten.<br>
+ * {@link #startRound(int, Player)}
+ * @author EGA
+ */
 public class RoundLogic
 {
     private final PizzeriaManager pizzeriaManager;
@@ -24,9 +27,14 @@ public class RoundLogic
         this.pizzeriaManager = pizzeriaManager;
     }
 
-    public void startRound(int roundNumber, Player player)
+    /**
+     * Diese Methode startet eine Runde, sie läuft die Runde einmal komplett ab.
+     * @param roundNumber sagt die derzeitige Runde an welche ausgeführt werden soll.
+     * @param player ist der Spieler mit dem die Runde ausgeführt werden soll.
+     * @author EGA
+     */
+    public void startRound(int roundNumber, Player player, SaveManager saveManager)
     {
-
         Color colors = new Color();
         RoomManager roomManager = pizzeriaManager.getRoomManager();
         EnemyManager enemyManager = pizzeriaManager.getEnemyManager();
@@ -41,12 +49,10 @@ public class RoundLogic
             roomManager.addEnemyToRoom(EnemyName.FOXXY, RoomName.PIRATECOVE);
         }
 
-//        Make Everyone walk his way to the door
 
 //        Printe Mapstatus
         gameInformation.printRoundHeader(roundNumber);
 
-//        gameInformation.printBonnieInCloset();
         pizzeriaManager.decreasePizzeriaEnergyLevel(2);
         if (pizzeriaManager.getPizzeria().getEnergyLeft() > 0)
         {
@@ -71,9 +77,22 @@ public class RoundLogic
                 player.setAlive(false);
             }
         }
+//        Öffne die Türen am Ende der Runde.
         roomManager.openDoors();
+//        Speichere den Spielstand.
+        saveManager.saveEnemiesStatus();
+        saveManager.saveGameStatus(roundNumber);
     }
 
+    /**
+     * Diese Methode reagiert auf die Benutzer eingabe und führt den dementsprechenden Befehl aus.
+     * @param cameraManager wird benötigt zur verwaltung der Befehle.
+     * @param pizzeriaManager wird benötigt zur verwaltung der Befehle.
+     * @param inputMechanic wird benötigt zur verwaltung der Befehle.
+     * @param enemyManager wird benötigt zur verwaltung der Befehle.
+     * @param player wird benötigt zur verwaltung der Befehle.
+     * @author EGA
+     */
     public void reactToUserInput(
             CameraManager cameraManager,
             PizzeriaManager pizzeriaManager,
@@ -92,9 +111,9 @@ public class RoundLogic
             {
                 switch (possibleUserCommands)
                 {
-                    case SKIP -> handleSkipCommand(cameraManager, enemyManager, roomManager);
+                    case SKIP -> handleSkipCommand(cameraManager, enemyManager, roomManager,player);
                     case USE_CAMERA ->
-                            handleUseCameraCommand(cameraManager, pizzeriaManager, inputMechanic, enemyManager);
+                            handleUseCameraCommand(cameraManager, pizzeriaManager, inputMechanic, enemyManager,player, player.getTablet());
                     case CLOSEDOORS -> handleCloseDoorsCommand(roomManager, pizzeriaManager, cameraManager);
                     case PRINTMAP ->
                             handlePrintMapCommand(cameraManager, pizzeriaManager, inputMechanic, enemyManager, player);
@@ -105,7 +124,7 @@ public class RoundLogic
             {
                 if (possibleUserCommands == PossibleUserCommand.SKIP)
                 {
-                    handleSkipCommand(cameraManager, enemyManager, roomManager);
+                    handleSkipCommand(cameraManager, enemyManager, roomManager,player);
                 }
                 else
                 {
@@ -125,11 +144,12 @@ public class RoundLogic
         reactToUserInput(cameraManager, pizzeriaManager, inputMechanic, enemyManager, player);
     }
 
-    private void handleSkipCommand(CameraManager cameraManager, EnemyManager enemyManager, RoomManager roomManager)
+    private void handleSkipCommand(CameraManager cameraManager, EnemyManager enemyManager, RoomManager roomManager,Player player)
     {
-        System.out.println(blue + "Round skipped" + reset);
+        System.out.println(blue + "Round skipped, you dropped your tablet." + reset);
         roomManager.printEnemiesNextToOffice(enemyManager);
         cameraManager.resetTabletsCameraAccess();
+        player.setTablet(null);
     }
 
     private void handleCloseDoorsCommand(RoomManager roomManager, PizzeriaManager pizzeriaManager, CameraManager cameraManager)
@@ -144,8 +164,12 @@ public class RoundLogic
         player.setAlive(false);
     }
 
-    private void handleUseCameraCommand(CameraManager cameraManager, PizzeriaManager pizzeriaManager, InputLogic inputMechanic, EnemyManager enemyManager)
+    private void handleUseCameraCommand(CameraManager cameraManager, PizzeriaManager pizzeriaManager, InputLogic inputMechanic, EnemyManager enemyManager, Player player, Tablet tablet)
     {
+        if (player.getTablet() == null){
+            System.out.println(grey+"You picked up your tablet."+reset);
+            player.setTablet(tablet);
+        }
         cameraManager.printCameraAccess();
         cameraManager.useChosenCamera(inputMechanic.askUserForCameraUse(), pizzeriaManager.getPizzeria(), enemyManager);
         pizzeriaManager.decreasePizzeriaEnergyLevel(2);
@@ -167,5 +191,10 @@ public class RoundLogic
         {
             return false;
         }
+    }
+
+    public PizzeriaManager getPizzeriaManager()
+    {
+        return pizzeriaManager;
     }
 }

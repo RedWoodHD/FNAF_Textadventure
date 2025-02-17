@@ -1,6 +1,6 @@
 package Game.main;
 
-import Game.mechanic.FnafGame;
+import Game.logic.FnafGame;
 
 /**
  * Diese Klasse ist die Main, in der das {@link FnafGame} gestartet wird.<br>

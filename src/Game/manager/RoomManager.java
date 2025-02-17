@@ -143,4 +143,9 @@ public class RoomManager
         this.enemyManager = enemyManager;
         return this;
     }
+
+    public Map<RoomName, Room> getAllRoomsMap()
+    {
+        return allRoomsMap;
+    }
 }

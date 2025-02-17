@@ -10,11 +10,6 @@ public class Player
     private boolean isAlive = true;
     private Tablet tablet;
 
-    public boolean isAlive()
-    {
-        return isAlive;
-    }
-
     public Player setAlive(boolean alive)
     {
         isAlive = alive;
@@ -30,6 +25,11 @@ public class Player
     {
         this.tablet = tablet;
         return this;
+    }
+
+    public boolean isAlive()
+    {
+        return isAlive;
     }
 }
 

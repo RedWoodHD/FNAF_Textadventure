@@ -125,6 +125,13 @@ public class RoomFactory
         return room;
     }
 
+    /**
+     * Füge einem {@link Room Raum} seinen {@link Room#neighborRooms Nachbarn} hinzu.
+     * @param currentRoom Derzeitiger {@link Room Raum}.
+     * @param direction {@link Direction Richtung} in die der {@link Room#neighborRooms Nachbar} ist.
+     * @param roomToAdd {@link Room Raum} der hinzugefügt werden soll.
+     * @author EGA
+     */
     private void addNeighborRoom(Room currentRoom, Direction direction, Room roomToAdd)
     {
 

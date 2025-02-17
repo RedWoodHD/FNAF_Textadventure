@@ -29,59 +29,14 @@ public class Pizzeria
         return enemyMap.get(enemyName);
     }
 
-    /**
-     * Diese Methode liefert einen schnelleren Zugriff, auf den {@link Room} in dem sich der {@link Enemy} befindet.<br>
-     * Sie nimmt den {@link EnemyName} des gewünschten {@link Enemy}'s und gibt dessen {@link Room} zurück.<br>
-     * @param enemyName dieser Parameter bestimmt von welchem {@link Enemy} der {@link Enemy#whereAmI} {@link Room} zurückgeliefert werden soll.
-     * @return gibt den {@link Enemy#whereAmI} {@link Room} zurück.
-     */
-    public Room getEnemyRoom (EnemyName enemyName){
-        return enemyMap.get(enemyName).getWhereAmI();
-    }
-
-    /**
-     * Diese Methode liefert einen schnelleren Zugriff auf alle {@link Room}'s der {@link Pizzeria}<br>
-     *Sie nimmt den {@link RoomName} des gewünschten {@link Room}'s und gibt diesen {@link Room} zurück.<br>
-     * @param roomName dieser Parameter bestimmt welcher {@link Room} aus der {@link #roomMap} zurückgeliefert werden soll.
-     * @return gibt den Value ({@link Room}) aus der {@link #roomMap} mit dem Key {@link RoomName} zurück.
-     */
-    public Room getRoom (RoomName roomName){
-        return roomMap.get(roomName);
-    }
-
-    /**
-     * Diese Methode liefert einen schnelleren Zugriff auf den {@link EnemyName} von den gewünschten {@link Enemy}'s<br>
-     * Sie nimmt den {@link EnemyName} des gewünschten {@link Enemy}'s und gibt diesen {@link EnemyName} zurück.<br>
-     * @param enemy dieser Parameter bestimmt von welchem {@link Enemy} der {@link EnemyName} zurückgeliefert werden soll.
-     * @return gibt den {@link EnemyName} vom
-     */
-
-    public EnemyName getEnemyName(Enemy enemy){
-        return enemy.getName();
-    }
-
     public Map<RoomName, Room> getRoomMap()
     {
         return roomMap;
     }
-
-    public Pizzeria setRoomMap(Map<RoomName, Room> roomMap)
-    {
-        this.roomMap = roomMap;
-        return this;
-    }
-
     public Map<EnemyName, Enemy> getEnemyMap()
     {
         return enemyMap;
     }
-
-    public Pizzeria setEnemyMap(Map<EnemyName, Enemy> enemyMap)
-    {
-        this.enemyMap = enemyMap;
-        return this;
-    }
-
     public Integer getEnergyLeft() {
         return energyLeft;
     }

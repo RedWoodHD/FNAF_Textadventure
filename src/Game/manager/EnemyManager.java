@@ -3,7 +3,7 @@ package Game.manager;
 import Game.factor.Direction;
 import Game.factor.EnemyName;
 import Game.factor.RoomName;
-import Game.mechanic.RoundLogic;
+import Game.logic.RoundLogic;
 import Game.object.Enemy;
 import Game.object.Player;
 import Game.object.Room;
@@ -11,7 +11,7 @@ import Game.text_message.DeathMessage;
 
 import java.util.Map;
 
-import static Game.mechanic.RoundLogic.randomBoolean;
+import static Game.logic.RoundLogic.randomBoolean;
 
 /**
  * Diese Klasse Verwaltet alle{@link Enemy}'s.<br>
@@ -306,5 +306,8 @@ public class EnemyManager
         }
     }
 
-
+    public Map<EnemyName, Enemy> getEnemyMap()
+    {
+        return enemyMap;
+    }
 }

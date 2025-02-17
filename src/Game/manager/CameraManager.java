@@ -141,4 +141,12 @@ public class CameraManager
     {
         tablet.setWhatCameraDoILookAt(allCameras.get(CameraName.FREECAM));
     }
+
+    public Tablet getTablet()
+    {
+        return tablet;
+    }
+    public Camera getCamera(CameraName cameraName){
+        return allCameras.get(cameraName);
+    }
 }

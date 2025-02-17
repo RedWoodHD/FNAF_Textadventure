@@ -1,6 +1,6 @@
 package Game.text_message;
 
-import static Game.mechanic.InputLogic.toBeContinued;
+import static Game.logic.InputLogic.toBeContinued;
 import static Game.text_message.Color.*;
 
 /**
